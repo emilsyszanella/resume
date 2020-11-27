@@ -172,6 +172,7 @@ img::-moz-selection {
 header.masthead {
     text-align: center;
     color: #fff;
+    position: relative;
     background-image: url(../img/header-bg.jpg);
     background-repeat: no-repeat;
     background-attachment: scroll;
@@ -183,8 +184,7 @@ header.masthead {
 }
 
     header.masthead .intro-text {
-        padding-top: 150px;
-        padding-bottom: 100px
+        padding: 100px;
     }
 
         header.masthead .intro-text .intro-lead-in {
@@ -205,8 +205,7 @@ header.masthead {
 
 @media (min-width:768px) {
     header.masthead .intro-text {
-        padding-top: 300px;
-        padding-bottom: 200px
+        padding: 100px;
     }
 
         header.masthead .intro-text .intro-lead-in {
@@ -233,7 +232,6 @@ header.masthead {
 
 #portfolio .portfolio-item {
     right: 0;
-    margin: 0 0 15px
 }
 
     #portfolio .portfolio-item .portfolio-link {
