@@ -1,0 +1,12 @@
+﻿
+.column {
+    float: left;
+    width: 16%;
+    margin-bottom: 16px;
+    padding: 0 10px;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 10px;
+}
