@@ -190,7 +190,7 @@ header.masthead {
 }
 
     header.masthead .intro-text {
-        padding: 100px;
+        padding: 100px 0px;
     }
 
         header.masthead .intro-text .intro-lead-in {
@@ -211,7 +211,7 @@ header.masthead {
 
 @media (min-width: 768px) {
     header.masthead .intro-text {
-        padding: 100px;
+        padding: 100px 0px;
     }
 
         header.masthead .intro-text .intro-lead-in {
@@ -238,6 +238,7 @@ header.masthead {
 
 #portfolio .portfolio-item {
     right: 0;
+    margin: 0 0 15px;
 }
 
     #portfolio .portfolio-item .portfolio-link {
