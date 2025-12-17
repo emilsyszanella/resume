@@ -28,25 +28,29 @@ const ContactSection = () => {
                             <Mail size={20} /> Say Hello
                         </motion.a>
 
-                        {/* GitHub hidden as requested (empty personal profile) */}
-                        {/* 
-                        <div style={styles.socialRow}>
-                            <a href="https://github.com/emilsyszanella" target="_blank" rel="noopener noreferrer" style={styles.socialLink}>
-                                <Github size={24} />
-                            </a>
-                        </div> 
-                        */}
+                        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+                            <motion.a
+                                href="https://github.com/emilsyszanella"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={styles.secondaryButton}
+                                whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.05)' }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Github size={20} /> GitHub
+                            </motion.a>
 
-                        <motion.a
-                            href="https://linkedin.com/in/emilsyszanella"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            style={styles.secondaryButton}
-                            whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.05)' }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            <Linkedin size={20} /> Connect on LinkedIn
-                        </motion.a>
+                            <motion.a
+                                href="https://linkedin.com/in/emilsyszanella"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={styles.secondaryButton}
+                                whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.05)' }}
+                                whileTap={{ scale: 0.95 }}
+                            >
+                                <Linkedin size={20} /> LinkedIn
+                            </motion.a>
+                        </div>
                     </div>
 
                     <footer style={styles.footer}>
