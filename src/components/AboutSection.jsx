@@ -94,7 +94,7 @@ const AboutSection = () => {
                     <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bento-card card-large">
                         <div className="photo-placeholder">
                             {/* Replace src with your actual photo URL */}
-                            <img src="/profile.jpg" alt="Emilsys Zanella" className="profile-photo" />
+                            <img src="./profile.jpg" alt="Emilsys Zanella" className="profile-photo" />
                         </div>
                     </motion.div>
 
