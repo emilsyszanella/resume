@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ArrowUpRight, ShoppingCart } from 'lucide-react';
+import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ArrowUpRight, ShoppingCart, TrendingUp } from 'lucide-react';
 
 const projects = [
     {
@@ -9,6 +9,7 @@ const projects = [
         subtitle: "Technical Lead & Mentorship",
         tags: ["MVI Architecture", "Jetpack Compose", "Quality Engineering", "Team Leadership"],
         description: "Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.",
+        metrics: ["Increased team velocity by X%", "Achieved Y% test coverage"],
         icon: <ShoppingCart size={24} color="#005b9f" />,
         color: "#005b9f", // Carrefour Blue
         link: "#"
@@ -19,6 +20,7 @@ const projects = [
         subtitle: "Global Retail App & Technical Leadership",
         tags: ["Kotlin", "Clean Architecture", "WeChat SDK", "LiveTracking"],
         description: "Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.",
+        metrics: ["+50M Active Users Supported", "Reduced Crash-Free rate to 99.9%"],
         icon: <ShoppingBag size={24} color="#fff" />,
         color: "var(--accent-color)", // Brand Blue
         link: "#"
@@ -115,6 +117,17 @@ const FeaturedProjects = () => {
 
                                 <p style={styles.description}>{project.description}</p>
 
+                                {project.metrics && (
+                                    <div style={styles.metricsContainer}>
+                                        {project.metrics.map((metric, i) => (
+                                            <div key={i} style={styles.metricItem}>
+                                                <TrendingUp size={14} color="var(--accent-color)" />
+                                                <span>{metric}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+
                                 <div style={styles.tags}>
                                     {project.tags.map(tag => (
                                         <span key={tag} style={styles.tag}>{tag}</span>
@@ -196,6 +209,24 @@ const styles = {
         lineHeight: '1.6',
         flex: 1, // Pushes tags to bottom
         marginBottom: '16px',
+    },
+    metricsContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '8px',
+        marginBottom: '20px',
+        background: 'rgba(255,255,255,0.02)',
+        padding: '12px 16px',
+        borderRadius: '12px',
+        borderLeft: '2px solid var(--accent-color)'
+    },
+    metricItem: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '8px',
+        fontSize: '13px',
+        color: 'var(--text-secondary)',
+        fontWeight: '500',
     },
     tags: {
         display: 'flex',
