@@ -1,14 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ArrowUpRight } from 'lucide-react';
+import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ArrowUpRight, ShoppingCart } from 'lucide-react';
 
 const projects = [
     {
+        id: 0,
+        title: "Carrefour Spain",
+        subtitle: "Technical Lead & Mentorship",
+        tags: ["MVI Architecture", "Jetpack Compose", "Quality Engineering", "Team Leadership"],
+        description: "Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.",
+        icon: <ShoppingCart size={24} color="#005b9f" />,
+        color: "#005b9f", // Carrefour Blue
+        link: "#"
+    },
+    {
         id: 1,
         title: "Inditex (ZARA)",
-        subtitle: "Global Retail App",
+        subtitle: "Global Retail App & Technical Leadership",
         tags: ["Kotlin", "Clean Architecture", "WeChat SDK", "LiveTracking"],
-        description: "Key contributor to the global Zara Android app (+50M downloads). Implemented critical features including WeChat integration, LiveTracking, Payment Methods, and User Session Management. Applied Clean Architecture patterns to harmonize complex business requirements with user needs.",
+        description: "Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.",
         icon: <ShoppingBag size={24} color="#fff" />,
         color: "var(--accent-color)", // Brand Blue
         link: "#"
@@ -28,7 +38,7 @@ const projects = [
         title: "Janis (Logistic)",
         subtitle: "Intelligent Supply Chain",
         tags: ["Google Maps SDK", "Offline-First", "Real-time Sync"],
-        description: "Contributed to the development of a high-efficiency logistics application. Solved complex routing challenges with custom internal maps and implemented robust offline data synchronization.",
+        description: "Architected and delivered a high-efficiency logistics application from scratch as an independent Technical Lead. Defined the entire technical stack, solved complex routing challenges with custom internal maps, and implemented robust offline data synchronization.",
         icon: <Map size={24} color="#FF9500" />,
         color: "#FF9500", // Logistics Orange
         link: "#"
@@ -38,7 +48,7 @@ const projects = [
         title: "RedyPlan CDI",
         subtitle: "Emergency Response Platform",
         tags: ["Geolocation", "Background Services", "Critical Alerts"],
-        description: "Built a vital medical assistance application focused on reliability. Developed a background location tracking system and 'Panic Button' functionality that operates seamlessly across varying network conditions (WiFi/Mobile Data) in LATAM regions.",
+        description: "Led the end-to-end technical execution of a vital medical assistance application as a freelance architect. Designed a highly reliable background location tracking system and 'Panic Button' functionality that operates seamlessly across varying network conditions in LATAM regions.",
         icon: <Activity size={24} color="#FF3B30" />,
         color: "#FF3B30", // Emergency Red
         link: "#"
@@ -58,7 +68,7 @@ const projects = [
         title: "Amadita Games",
         subtitle: "Enterprise Gamification Suite",
         tags: ["Kiosk Mode", "Lock Task API", "Custom Launcher"],
-        description: "Created a secure, custom Android Kiosk ecosystem for children in clinical waiting rooms. Built 'Manager' (admin control) and 3 educational games (SuperMemory, SuperScientist) locked to specific hardware devices.",
+        description: "Architected a secure, custom Android Kiosk ecosystem for children in clinical waiting rooms from the ground up. As the sole technical owner, built the admin 'Manager' and 3 educational games locked to specific hardware devices, making all structural and architectural decisions.",
         icon: <Gamepad2 size={24} color="#BF5AF2" />,
         color: "#BF5AF2", // Gaming/Creative Purple
         link: "#"
