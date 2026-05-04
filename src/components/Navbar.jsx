@@ -70,6 +70,11 @@ const Navbar = () => {
                             <a href="#projects" style={getLinkStyle('projects')}>Work</a>
                         </li>
                         <li>
+                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" style={{ ...styles.cta, background: 'transparent', border: '1px solid var(--border-focus)' }}>
+                                Resume
+                            </a>
+                        </li>
+                        <li>
                             <a
                                 href="#contact"
                                 style={{
@@ -110,6 +115,9 @@ const Navbar = () => {
                             </li>
                             <li>
                                 <a href="#contact" onClick={toggleMenu} style={{ color: activeSection === 'contact' ? 'var(--accent-color)' : 'var(--text-primary)' }}>Contact</a>
+                            </li>
+                            <li>
+                                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={toggleMenu} style={{ color: 'var(--text-secondary)' }}>Resume PDF</a>
                             </li>
                         </ul>
                     </motion.div>
