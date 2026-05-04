@@ -60,7 +60,7 @@ const HeroSection = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <p style={styles.description}>
-                        I don't just build apps; I define the standard. From high-scale systems at <strong>Inditex (ZARA)</strong> to award-winning native solutions. Bridging the gap between creative vision and rock-solid engineering.
+                        I don't just build apps; I define the standard. Bridging the gap between business vision, rigorous code quality, and rock-solid engineering. Empowering engineering teams at <strong>Carrefour</strong> and <strong>Inditex (ZARA)</strong> to ship high-scale native solutions with confidence.
                     </p>
                 </motion.div>
 
