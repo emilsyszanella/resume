@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Globe, Layers } from 'lucide-react';
+import { Code, Smartphone, Globe, Layers, Users } from 'lucide-react';
 
 const AboutSection = () => {
     const containerVariants = {
@@ -58,15 +58,15 @@ const AboutSection = () => {
                     </motion.h2>
 
                     <motion.p variants={itemVariants} className="about-text">
-                        My engineering journey is defined by versatility and impact. From <strong>founding and exiting GeoHealth</strong> to architecting the mobile backbone of <strong>Inditex (ZARA)</strong> for over 12.6 million users. I don't just write code; I build viable, high-scale businesses.
+                        My engineering journey is defined by versatility and impact. From <strong>founding and exiting GeoHealth</strong> to architecting the mobile backbone of <strong>Inditex (ZARA)</strong> for over 12.6 million users. I don't just write code; I build viable, high-scale technical foundations.
                     </motion.p>
 
                     <motion.p variants={itemVariants} className="about-text">
-                        As a <strong>Senior System Engineer</strong>, I bridge the gap between complex embedded hardware and fluid, intuitive user interfaces. I specialize in <strong>Jetpack Compose</strong>, <strong>clean architecture</strong>, and high-performance native solutions that just work.
+                        As a <strong>Technical Lead & Senior Architect</strong>, I bridge the gap between business vision and technical execution. Currently empowering the engineering team at <strong>Carrefour Spain</strong>, I lead by example, mentoring engineers and establishing rigorous testing standards.
                     </motion.p>
 
                     <motion.p variants={itemVariants} className="about-text">
-                        I thrive on complexity. Whether it's integrating <strong>Chinese OAuth ecosystems (WeChat)</strong>, managing <strong>embedded Android kiosk modes</strong> for Honda, or optimizing real-time critical systems, I deliver engineering excellence.
+                        I thrive on complexity and code quality. Whether it's integrating <strong>Chinese OAuth ecosystems (WeChat)</strong>, defining strict <strong>TDD/BDD</strong> practices, or establishing <strong>clean architecture</strong> patterns across distributed squads, I deliver engineering excellence.
                     </motion.p>
 
                     <motion.div variants={techListVariants} className="tech-stack">
@@ -105,9 +105,9 @@ const AboutSection = () => {
                     </motion.div>
 
                     <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bento-card">
-                        <Code size={32} color="#30D158" />
-                        <h3 className="card-title">Clean Code</h3>
-                        <p className="card-text">Scalable & maintainable arch.</p>
+                        <Users size={32} color="#30D158" />
+                        <h3 className="card-title">Tech Lead</h3>
+                        <p className="card-text">Mentoring & Quality Advocate</p>
                     </motion.div>
 
                     <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} className="bento-card card-wide">
