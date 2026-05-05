@@ -19,6 +19,7 @@
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', var(--font-sans);
 
   /* Spacing */
   --spacing-xs: 4px;
@@ -72,6 +73,10 @@ body {
   overflow-x: hidden;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -92,7 +97,7 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, #fff 0%, #86868b 100%);
+  background: linear-gradient(180deg, #fff 0%, #86868b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

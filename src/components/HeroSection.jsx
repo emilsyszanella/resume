@@ -155,7 +155,7 @@ const styles = {
         fontWeight: '800',
         marginBottom: '32px',
         letterSpacing: '-2px',
-        background: 'linear-gradient(to bottom, #fff, #ccc)',
+        background: 'linear-gradient(180deg, #ffffff 0%, #737373 100%)',
         WebkitBackgroundClip: 'text',
         WebkitTextFillColor: 'transparent',
     },
