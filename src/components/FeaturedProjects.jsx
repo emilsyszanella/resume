@@ -7,9 +7,10 @@ const projects = [
         id: 0,
         title: "Carrefour Spain",
         subtitle: "Technical Lead & Mentorship",
+        colSpan: 2,
         tags: ["MVI Architecture", "Jetpack Compose", "Quality Engineering", "Team Leadership"],
         description: "Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.",
-        metrics: ["Increased team velocity by X%", "Achieved Y% test coverage"],
+        metrics: ["13M Active Users", "Architected MVP & Delivery Pipeline", "Mentoring 3 engineers (Junior to Mid)"],
         icon: <ShoppingCart size={24} color="#005b9f" />,
         color: "#005b9f", // Carrefour Blue
         link: "#"
@@ -18,9 +19,10 @@ const projects = [
         id: 1,
         title: "Inditex (ZARA)",
         subtitle: "Global Retail App & Technical Leadership",
+        colSpan: 2,
         tags: ["Kotlin", "Clean Architecture", "WeChat SDK", "LiveTracking"],
         description: "Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.",
-        metrics: ["+50M Active Users Supported", "Reduced Crash-Free rate to 99.9%"],
+        metrics: ["+12M Active Users (22M Daily Traffic)", "+1.9M Global Transactions", "90% Test Coverage on new architecture"],
         icon: <ShoppingBag size={24} color="#fff" />,
         color: "var(--accent-color)", // Brand Blue
         link: "#"
@@ -69,6 +71,7 @@ const projects = [
         id: 6,
         title: "Amadita Games",
         subtitle: "Enterprise Gamification Suite",
+        colSpan: 2,
         tags: ["Kiosk Mode", "Lock Task API", "Custom Launcher"],
         description: "Architected a secure, custom Android Kiosk ecosystem for children in clinical waiting rooms from the ground up. As the sole technical owner, built the admin 'Manager' and 3 educational games locked to specific hardware devices, making all structural and architectural decisions.",
         icon: <Gamepad2 size={24} color="#BF5AF2" />,
@@ -99,8 +102,8 @@ const FeaturedProjects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
-                            whileHover={{ y: -8, transition: { duration: 0.2 } }}
-                            className="project-card"
+                            whileHover={{ borderColor: 'var(--border-focus)', backgroundColor: 'rgba(255,255,255,0.03)', transition: { duration: 0.2 } }}
+                            className={`project-card ${project.colSpan === 2 ? 'span-2' : ''}`}
                             style={styles.card}
                         >
                             <motion.div
