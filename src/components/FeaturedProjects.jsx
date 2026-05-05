@@ -7,7 +7,7 @@ const projects = [
         id: 0,
         title: "Carrefour Spain",
         subtitle: "Technical Lead & Mentorship",
-        colSpan: 2,
+        colSpan: 3,
         tags: ["MVI Architecture", "Jetpack Compose", "Quality Engineering", "Team Leadership"],
         description: "Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.",
         metrics: ["13M Active Users", "Architected MVP & Delivery Pipeline", "Mentoring 3 engineers (Junior to Mid)"],
@@ -19,7 +19,7 @@ const projects = [
         id: 1,
         title: "Inditex (ZARA)",
         subtitle: "Global Retail App & Technical Leadership",
-        colSpan: 2,
+        colSpan: 3,
         tags: ["Kotlin", "Clean Architecture", "WeChat SDK", "LiveTracking"],
         description: "Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.",
         metrics: ["+12M Active Users (22M Daily Traffic)", "+1.9M Global Transactions", "90% Test Coverage on new architecture"],
@@ -31,6 +31,7 @@ const projects = [
         id: 2,
         title: "Honda (Wind River)",
         subtitle: "Automotive Embedded Systems",
+        colSpan: 2,
         tags: ["Android Automotive", "AOSP", "Safety Critical", "JNI"],
         description: "Engineered safety-compliant infotainment middleware for Honda vehicles. Implemented driver distraction mitigation logic (speed-dependent feature blocking) and audio priority arbitration systems adhering to strict automotive standards.",
         icon: <Navigation size={24} color="#30D158" />,
@@ -41,6 +42,7 @@ const projects = [
         id: 3,
         title: "Janis (Logistic)",
         subtitle: "Intelligent Supply Chain",
+        colSpan: 2,
         tags: ["Google Maps SDK", "Offline-First", "Real-time Sync"],
         description: "Architected and delivered a high-efficiency logistics application from scratch as an independent Technical Lead. Defined the entire technical stack, solved complex routing challenges with custom internal maps, and implemented robust offline data synchronization.",
         icon: <Map size={24} color="#FF9500" />,
@@ -49,29 +51,20 @@ const projects = [
     },
     {
         id: 4,
-        title: "RedyPlan CDI",
-        subtitle: "Emergency Response Platform",
-        tags: ["Geolocation", "Background Services", "Critical Alerts"],
-        description: "Led the end-to-end technical execution of a vital medical assistance application as a freelance architect. Designed a highly reliable background location tracking system and 'Panic Button' functionality that operates seamlessly across varying network conditions in LATAM regions.",
+        title: "HealthCrisis Responder (VZLA)",
+        subtitle: "Social Impact & Civic Tech",
+        colSpan: 2,
+        tags: ["Geolocation", "Crowdsourcing", "Google Maps API", "Social Impact"],
+        description: "Developed a geo-location-based medication discovery platform during the severe 2014 health crisis in Venezuela. Built to solve a critical real-world problem, the app allowed users to crowdsource and locate scarce medical supplies in real-time within their geographical radius.",
         icon: <Activity size={24} color="#FF3B30" />,
-        color: "#FF3B30", // Emergency Red
-        link: "#"
-    },
-    {
-        id: 5,
-        title: "Focalyx",
-        subtitle: "Telemedicine & Monitoring",
-        tags: ["HealthTech", "Data Security", "Real-time Messaging"],
-        description: "Developed a secure patient-physician communication network for prostate cancer monitoring. Implemented compliant health data handling and real-time status updates to facilitate direct remote medical supervision.",
-        icon: <Stethoscope size={24} color="#5AC8FA" />,
-        color: "#5AC8FA", // Medical Blue
+        color: "#FF3B30", // Urgent Red
         link: "#"
     },
     {
         id: 6,
         title: "Amadita Games",
         subtitle: "Enterprise Gamification Suite",
-        colSpan: 2,
+        colSpan: 6,
         tags: ["Kiosk Mode", "Lock Task API", "Custom Launcher"],
         description: "Architected a secure, custom Android Kiosk ecosystem for children in clinical waiting rooms from the ground up. As the sole technical owner, built the admin 'Manager' and 3 educational games locked to specific hardware devices, making all structural and architectural decisions.",
         icon: <Gamepad2 size={24} color="#BF5AF2" />,
@@ -103,7 +96,7 @@ const FeaturedProjects = () => {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
                             whileHover={{ borderColor: 'var(--border-focus)', backgroundColor: 'rgba(255,255,255,0.03)', transition: { duration: 0.2 } }}
-                            className={`project-card ${project.colSpan === 2 ? 'span-2' : ''}`}
+                            className={`project-card span-${project.colSpan || 1}`}
                             style={styles.card}
                         >
                             <motion.div
