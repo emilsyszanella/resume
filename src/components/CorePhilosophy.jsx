@@ -47,7 +47,7 @@ const CorePhilosophy = () => {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.15, duration: 0.5 }}
                             style={styles.card}
-                            whileHover={{ borderColor: 'var(--border-focus)', backgroundColor: 'rgba(255,255,255,0.02)' }}
+                            whileHover={{ y: -5, boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}
                         >
                             <div style={styles.iconWrapper}>
                                 {item.icon}
