@@ -53,8 +53,8 @@ const Navbar = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 style={{
                     ...styles.nav,
-                    background: isScrolled ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
-                    borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
+                    background: isScrolled ? 'var(--bg-primary)' : 'transparent',
+                    borderBottom: isScrolled ? '1px solid var(--border-subtle)' : 'none',
                     backdropFilter: isScrolled ? 'blur(20px)' : 'none',
                 }}
             >
@@ -79,7 +79,7 @@ const Navbar = () => {
                                 href="#contact"
                                 style={{
                                     ...styles.cta,
-                                    background: activeSection === 'contact' ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.1)',
+                                    background: activeSection === 'contact' ? 'var(--text-primary)' : 'var(--card-bg-subtle)',
                                     color: activeSection === 'contact' ? 'var(--bg-primary)' : 'var(--text-primary)'
                                 }}
                             >
@@ -90,7 +90,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <button style={styles.mobileToggle} onClick={toggleMenu} className="mobile-only">
-                        {isMobileMenuOpen ? <X size={24} color="#fff" /> : <Menu size={24} color="#fff" />}
+                        {isMobileMenuOpen ? <X size={24} color="var(--text-primary)" /> : <Menu size={24} color="var(--text-primary)" />}
                     </button>
                 </div>
             </motion.nav>
@@ -173,7 +173,7 @@ const styles = {
     },
     cta: {
         color: 'var(--text-primary)',
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'var(--card-bg-subtle)',
         padding: '8px 16px',
         borderRadius: '20px',
         transition: 'background 0.2s',
@@ -188,7 +188,7 @@ const styles = {
         top: '80px', // Below nav
         left: 0,
         right: 0,
-        background: 'rgba(18, 18, 18, 0.95)',
+        background: 'var(--bg-primary)',
         backdropFilter: 'blur(20px)',
         padding: '32px',
         borderBottom: '1px solid var(--border-subtle)',

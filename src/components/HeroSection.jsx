@@ -132,8 +132,8 @@ const styles = {
         display: 'inline-flex',
         alignItems: 'center',
         gap: '8px',
-        background: 'rgba(255, 255, 255, 0.1)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'var(--card-bg-subtle)',
+        border: '1px solid var(--border-subtle)',
         padding: '8px 16px',
         borderRadius: '30px',
         fontSize: '14px',
@@ -145,8 +145,8 @@ const styles = {
         width: '8px',
         height: '8px',
         borderRadius: '50%',
-        background: '#30D158', // Success Green
-        boxShadow: '0 0 8px #30D158',
+        background: 'var(--success-color)', // Success Green
+        boxShadow: '0 0 8px var(--success-color)',
         animation: 'pulse 2s infinite',
     },
     headline: {
@@ -155,9 +155,7 @@ const styles = {
         fontWeight: '800',
         marginBottom: '32px',
         letterSpacing: '-2px',
-        background: 'linear-gradient(180deg, #ffffff 0%, #737373 100%)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
+        color: 'var(--text-primary)',
     },
     description: {
         fontSize: 'clamp(18px, 2vw, 22px)',
@@ -173,8 +171,8 @@ const styles = {
         flexWrap: 'wrap',
     },
     primaryButton: {
-        background: 'var(--text-primary)',
-        color: 'var(--bg-primary)',
+        background: 'var(--accent-color)',
+        color: '#FFFFFF',
         padding: '16px 32px',
         borderRadius: '30px',
         fontSize: '16px',
@@ -191,7 +189,7 @@ const styles = {
         borderRadius: '30px',
         fontSize: '16px',
         fontWeight: '600',
-        background: 'rgba(255,255,255,0.02)',
+        background: 'var(--card-bg-subtle)',
         backdropFilter: 'blur(10px)',
     },
     statsRow: {

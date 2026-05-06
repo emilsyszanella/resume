@@ -1,21 +1,26 @@
 :root {
-  /* System Colors - Apple/Google Dark Mode Style */
-  --bg-primary: #000000;
-  --bg-secondary: #121212;
-  /* Surface / Cards */
-  --bg-tertiary: #1c1c1e;
-  /* Elevated surface */
+  /* Light Mode (Default) - Executive Elegance */
+  --bg-primary: #F8FAFC; /* Slate 50 */
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary: #F1F5F9; /* Slate 100 */
 
-  --text-primary: #f5f5f7;
-  --text-secondary: #86868b;
-  --text-tertiary: #56565e;
+  --text-primary: #0F172A; /* Slate 900 */
+  --text-secondary: #475569; /* Slate 600 */
+  --text-tertiary: #94A3B8; /* Slate 400 */
 
-  --accent-color: #0a84ff;
-  /* iOS Blue */
-  --accent-glow: rgba(10, 132, 255, 0.4);
+  /* Executive Engineer Blue */
+  --accent-color: #2563EB; /* Blue 600 */
+  --accent-glow: rgba(37, 99, 235, 0.2);
+  --accent-bg-subtle: rgba(37, 99, 235, 0.05);
+  --success-color: #10B981; /* Emerald 500 */
 
-  --border-subtle: rgba(255, 255, 255, 0.1);
-  --border-focus: rgba(255, 255, 255, 0.2);
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-focus: rgba(37, 99, 235, 0.4);
+  
+  --transparent: rgba(248, 250, 252, 0); /* Fixes muddy gradient in light mode */
+  
+  --card-bg-subtle: rgba(15, 23, 42, 0.03);
+  --shadow-heavy: 0 20px 40px rgba(15, 23, 42, 0.1);
 
   /* Typography */
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -34,20 +39,47 @@
   --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Mode - Tech Lead Elegance */
+    --bg-primary: #0F172A; /* Slate 900 */
+    --bg-secondary: #1E293B; /* Slate 800 */
+    --bg-tertiary: #334155; /* Slate 700 */
+
+    --text-primary: #F8FAFC; /* Slate 50 */
+    --text-secondary: #94A3B8; /* Slate 400 */
+    --text-tertiary: #64748B; /* Slate 500 */
+
+    /* Executive Engineer Blue (Brighter for Dark Mode) */
+    --accent-color: #3B82F6; /* Blue 500 */
+    --accent-glow: rgba(59, 130, 246, 0.3);
+    --accent-bg-subtle: rgba(59, 130, 246, 0.1);
+    --success-color: #10B981;
+
+    --border-subtle: rgba(255, 255, 255, 0.1);
+    --border-focus: rgba(59, 130, 246, 0.5);
+    
+    --transparent: rgba(15, 23, 42, 0);
+    
+    --card-bg-subtle: rgba(255, 255, 255, 0.05);
+    --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(48, 209, 88, 0.7);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
   }
 
   70% {
     transform: scale(1);
-    box-shadow: 0 0 0 8px rgba(48, 209, 88, 0);
+    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
   }
 
   100% {
     transform: scale(1);
-    box-shadow: 0 0 0 0 rgba(48, 209, 88, 0);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
   }
 }
 
@@ -97,7 +129,7 @@ button {
 }
 
 .text-gradient {
-  background: linear-gradient(180deg, #fff 0%, #86868b 100%);
+  background: linear-gradient(90deg, var(--text-primary) 0%, var(--accent-color) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -147,7 +179,7 @@ button {
 .tech-tag {
   padding: 8px 16px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card-bg-subtle);
   border: 1px solid var(--border-subtle);
   font-size: 14px;
   color: var(--text-primary);
@@ -193,7 +225,7 @@ button {
   border-radius: 40px; /* Modern Squircle instead of circle */
   overflow: hidden;
   border: 2px solid var(--border-focus); /* Thinner, sleeker border */
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-heavy);
 }
 
 .profile-photo {
@@ -207,8 +239,8 @@ button {
   grid-column: span 2;
   align-items: center;
   text-align: center;
-  background: rgba(10, 132, 255, 0.05);
-  border-color: rgba(10, 132, 255, 0.2);
+  background: var(--accent-bg-subtle);
+  border-color: var(--border-focus);
   padding: 32px 24px;
 }
 

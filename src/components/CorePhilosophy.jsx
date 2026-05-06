@@ -47,7 +47,6 @@ const CorePhilosophy = () => {
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.15, duration: 0.5 }}
                             style={styles.card}
-                            whileHover={{ y: -5, boxShadow: '0 10px 30px -10px rgba(0,0,0,0.5)' }}
                         >
                             <div style={styles.iconWrapper}>
                                 {item.icon}
@@ -117,8 +116,8 @@ const styles = {
         width: '56px',
         height: '56px',
         borderRadius: '16px',
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.05)',
+        background: 'var(--card-bg-subtle)',
+        border: '1px solid var(--border-subtle)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

@@ -42,7 +42,7 @@ const ContactSection = () => {
                             target="_blank"
                             rel="noopener noreferrer"
                             style={styles.secondaryButton}
-                            whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.05)' }}
+                            whileHover={{ scale: 1.05, background: 'var(--card-bg-subtle)' }}
                             whileTap={{ scale: 0.95 }}
                         >
                             <Linkedin size={20} /> Connect on LinkedIn
@@ -62,7 +62,7 @@ const styles = {
     section: {
         padding: '120px 0 60px',
         textAlign: 'center',
-        background: 'linear-gradient(to bottom, var(--bg-primary), #000)',
+        background: 'var(--bg-primary)',
     },
     container: {
         maxWidth: '700px',
@@ -83,9 +83,7 @@ const styles = {
         fontWeight: '800',
         marginBottom: '24px',
         letterSpacing: '-2px',
-        background: 'linear-gradient(to bottom, #fff, #888)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
+        color: 'var(--text-primary)',
     },
     text: {
         fontSize: '20px',
@@ -102,8 +100,8 @@ const styles = {
         marginBottom: '80px',
     },
     primaryButton: {
-        background: 'var(--text-primary)',
-        color: 'var(--bg-primary)',
+        background: 'var(--accent-color)',
+        color: '#FFFFFF',
         padding: '16px 36px',
         borderRadius: '50px',
         fontSize: '16px',
@@ -112,7 +110,7 @@ const styles = {
         alignItems: 'center',
         gap: '10px',
         transition: 'transform 0.2s, opacity 0.2s',
-        border: '1px solid var(--text-primary)',
+        border: '1px solid var(--accent-color)',
     },
     secondaryButton: {
         background: 'transparent',

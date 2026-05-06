@@ -37,8 +37,7 @@ const BackgroundEffects = () => {
                 transition={{ duration: 12, repeat: Infinity, ease: "easeInOut", delay: 2 }}
             />
 
-            {/* Grid Overlay */}
-            <div style={styles.grid}></div>
+            {/* Eliminated Grid Overlay */}
         </div>
     );
 };
@@ -65,34 +64,22 @@ const styles = {
         right: '-5%',
         width: '600px',
         height: '600px',
-        background: 'radial-gradient(circle, rgba(10, 132, 255, 1) 0%, rgba(0,0,0,0) 70%)',
+        background: 'radial-gradient(circle, var(--accent-glow) 0%, var(--transparent) 70%)',
     },
     orbPurple: {
         bottom: '10%',
         left: '-10%',
         width: '500px',
         height: '500px',
-        background: 'radial-gradient(circle, rgba(191, 90, 242, 1) 0%, rgba(0,0,0,0) 70%)',
+        background: 'radial-gradient(circle, var(--card-bg-subtle) 0%, var(--transparent) 70%)',
     },
     orbTeal: {
         top: '40%',
         right: '15%',
         width: '400px',
         height: '400px',
-        background: 'radial-gradient(circle, rgba(48, 209, 88, 1) 0%, rgba(0,0,0,0) 70%)',
+        background: 'radial-gradient(circle, var(--accent-glow) 0%, var(--transparent) 70%)',
         opacity: 0.1,
-    },
-    grid: {
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px)',
-        backgroundSize: '40px 40px',
-        zIndex: 2,
-        maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 100%)',
-        WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.2) 100%)',
     }
 };
 

@@ -64,7 +64,7 @@ const Testimonials = () => {
                                 transition={{ duration: 0.3 }}
                                 style={styles.card}
                             >
-                                <Quote size={40} color="rgba(255,255,255,0.05)" style={styles.quoteIcon} />
+                                <Quote size={40} color="var(--border-focus)" style={styles.quoteIcon} />
                                 
                                 <p style={styles.text}>"{testimonials[currentIndex].text}"</p>
                                 
@@ -92,7 +92,7 @@ const Testimonials = () => {
                             key={idx} 
                             style={{
                                 ...styles.dot, 
-                                background: idx === currentIndex ? 'var(--accent-color)' : 'rgba(255,255,255,0.2)'
+                                background: idx === currentIndex ? 'var(--accent-color)' : 'var(--border-subtle)'
                             }}
                             onClick={() => setCurrentIndex(idx)}
                         />
@@ -138,8 +138,8 @@ const styles = {
         position: 'relative',
     },
     navButton: {
-        background: 'rgba(255,255,255,0.05)',
-        border: '1px solid rgba(255,255,255,0.1)',
+        background: 'var(--card-bg-subtle)',
+        border: '1px solid var(--border-subtle)',
         borderRadius: '50%',
         width: '48px',
         height: '48px',
@@ -156,7 +156,7 @@ const styles = {
         overflow: 'hidden',
     },
     card: {
-        background: 'rgba(255,255,255,0.02)',
+        background: 'var(--card-bg-subtle)',
         border: '1px solid var(--border-subtle)',
         borderRadius: '24px',
         padding: '48px 40px',
@@ -183,7 +183,7 @@ const styles = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        borderTop: '1px solid rgba(255,255,255,0.05)',
+        borderTop: '1px solid var(--border-subtle)',
         paddingTop: '24px',
     },
     authorInfo: {
@@ -202,7 +202,7 @@ const styles = {
     },
     linkedinIcon: {
         padding: '8px',
-        background: 'rgba(255,255,255,0.05)',
+        background: 'var(--card-bg-subtle)',
         borderRadius: '50%',
         display: 'flex',
         alignItems: 'center',

@@ -100,17 +100,13 @@ const FeaturedProjects = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ delay: index * 0.1, duration: 0.5 }}
-                            whileHover={{ borderColor: 'var(--border-focus)', backgroundColor: 'rgba(255,255,255,0.03)', transition: { duration: 0.2 } }}
+                            whileHover={{ borderColor: 'var(--border-focus)', backgroundColor: 'var(--card-bg-subtle)', transition: { duration: 0.2 } }}
                             className={`project-card span-${project.colSpan || 1}`}
                             style={styles.card}
                         >
-                            <motion.div
-                                style={{ ...styles.iconBox, background: `rgba(255,255,255,0.05)` }}
-                                whileHover={{ scale: 1.1, rotate: 5 }}
-                                transition={{ type: "spring", stiffness: 300 }}
-                            >
+                            <div style={{ ...styles.iconBox, background: `var(--card-bg-subtle)` }}>
                                 {project.icon}
-                            </motion.div>
+                            </div>
 
                             <div style={styles.content}>
                                 <h3 style={styles.title}>{project.title}</h3>
@@ -216,7 +212,7 @@ const styles = {
         flexDirection: 'column',
         gap: '8px',
         marginBottom: '20px',
-        background: 'rgba(255,255,255,0.02)',
+        background: 'var(--card-bg-subtle)',
         padding: '12px 16px',
         borderRadius: '12px',
         borderLeft: '2px solid var(--accent-color)'
@@ -238,8 +234,8 @@ const styles = {
         fontSize: '12px',
         padding: '6px 12px',
         borderRadius: '12px',
-        background: 'rgba(255,255,255,0.03)',
-        border: '1px solid rgba(255,255,255,0.05)',
+        background: 'var(--card-bg-subtle)',
+        border: '1px solid var(--border-subtle)',
         color: 'var(--text-secondary)',
     }
 };

@@ -74,7 +74,7 @@ const AboutSection = () => {
                             <motion.span
                                 key={tech}
                                 variants={techTagVariants}
-                                whileHover={{ scale: 1.05, backgroundColor: 'rgba(255, 255, 255, 0.1)' }}
+                                whileHover={{ scale: 1.05, backgroundColor: 'var(--border-focus)' }}
                                 className="tech-tag"
                             >
                                 {tech}
@@ -91,26 +91,26 @@ const AboutSection = () => {
                     viewport={{ once: true }}
                     className="about-grid"
                 >
-                    <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bento-card card-large">
+                    <motion.div variants={itemVariants} className="bento-card card-large">
                         <div className="photo-placeholder">
                             {/* Replace src with your actual photo URL */}
                             <img src="./profile.jpeg" alt="Emilsys Zanella" className="profile-photo" />
                         </div>
                     </motion.div>
 
-                    <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bento-card">
-                        <Smartphone size={32} color="#BF5AF2" />
+                    <motion.div variants={itemVariants} className="bento-card">
+                        <Smartphone size={32} color="var(--accent-color)" />
                         <h3 className="card-title">Native</h3>
                         <p className="card-text">100% Fluid mobile performance.</p>
                     </motion.div>
 
                     <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bento-card">
-                        <Users size={32} color="#30D158" />
+                        <Users size={32} color="var(--success-color)" />
                         <h3 className="card-title">Tech Lead</h3>
                         <p className="card-text">Mentoring & Quality Advocate</p>
                     </motion.div>
 
-                    <motion.div variants={itemVariants} whileHover={{ scale: 1.02 }} className="bento-card card-wide">
+                    <motion.div variants={itemVariants} className="bento-card card-wide">
                         <h3 className="stat-number" style={{ marginBottom: 0 }}>+12.6</h3>
                         <h3 className="stat-number" style={{ fontSize: '0.96em' }}>Millions Users Impacted.</h3>
                     </motion.div>
