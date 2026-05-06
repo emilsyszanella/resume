@@ -182,6 +182,7 @@ const FeaturedProjects = () => {
                             viewport={{ once: true, margin: '-100px' }}
                             transition={{ delay: index * 0.08, duration: 0.5 }}
                             className={`project-card span-${project.colSpan || 1}`}
+                            style={{ height: '100%' }}
                         >
                             <ProjectCard
                                 {...project.card}

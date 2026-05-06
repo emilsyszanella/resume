@@ -102,6 +102,8 @@ const cardStyles = {
         display: 'flex',
         flexDirection: 'column',
         gap: '20px',
+        height: '100%',
+        boxSizing: 'border-box',
         transition: 'border-color 0.2s ease',
     },
     header: {
@@ -145,6 +147,7 @@ const cardStyles = {
         fontSize: '15px',
         color: 'var(--text-secondary)',
         lineHeight: '1.65',
+        flex: 1,
     },
     metricsContainer: {
         display: 'flex',
