@@ -5,7 +5,7 @@ import { MapPin, Globe, ShieldCheck } from 'lucide-react';
 const stats = [
     { value: '11+', label: 'Years Engineering' },
     { value: '+12.6M', label: 'Users Impacted' },
-    { value: 'App Acquired', label: 'Health-tech commercialized to a pharmacy chain' },
+    { value: 'App Acquired', label: 'Acquired by a pharmacy chain' },
 ];
 
 const containerVariants = {
@@ -75,19 +75,7 @@ const AboutSection = () => {
                         systems that <strong>outlast the sprint they were born in.</strong>
                     </motion.p>
 
-                    {/* Stats row */}
-                    <motion.div variants={containerVariants} style={styles.statsGrid}>
-                        {stats.map((stat, i) => (
-                            <motion.div key={i} variants={itemVariants} style={styles.statCard}>
-                                <span style={styles.statValue}>
-                                    {stat.value.split('\n').map((line, j) => (
-                                        <span key={j} style={{ display: 'block', lineHeight: '1.1' }}>{line}</span>
-                                    ))}
-                                </span>
-                                <span style={styles.statLabel}>{stat.label}</span>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                    {/* Stats row removed from here → moved below grid */}
                 </motion.div>
 
                 {/* RIGHT: Photo */}
@@ -116,6 +104,28 @@ const AboutSection = () => {
                 </motion.div>
 
             </div>
+
+            {/* ── Stats bar: full width, below both columns ── */}
+            <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                style={styles.statsBar}
+            >
+                {stats.map((stat, i) => (
+                    <React.Fragment key={i}>
+                        <motion.div variants={itemVariants} style={styles.statCard}>
+                            <span style={styles.statValue}>{stat.value}</span>
+                            <span style={styles.statLabel}>{stat.label}</span>
+                        </motion.div>
+                        {i < stats.length - 1 && (
+                            <div style={styles.statDivider} />
+                        )}
+                    </React.Fragment>
+                ))}
+            </motion.div>
+
         </section>
     );
 };
@@ -129,7 +139,7 @@ const styles = {
         display: 'grid',
         gridTemplateColumns: '1fr 380px',
         gap: '80px',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         maxWidth: '1200px',
         margin: '0 auto',
         padding: '0 24px',
@@ -175,30 +185,41 @@ const styles = {
         maxWidth: '580px',
         margin: 0,
     },
-    statsGrid: {
-        display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '12px',
+    statsBar: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '40px',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        marginTop: '48px',
+        padding: '40px 24px 0',
         borderTop: '1px solid var(--border-subtle)',
-        paddingTop: '32px',
     },
     statCard: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '6px',
+        alignItems: 'center',
+        gap: '4px',
     },
     statValue: {
-        fontSize: '26px',
+        fontSize: '28px',
         fontWeight: '800',
         color: 'var(--text-primary)',
-        letterSpacing: '-0.5px',
-        lineHeight: '1.15',
     },
     statLabel: {
         fontSize: '12px',
         color: 'var(--text-tertiary)',
         lineHeight: '1.4',
         fontWeight: '500',
+        textAlign: 'center',
+        maxWidth: '160px',
+    },
+    statDivider: {
+        width: '1px',
+        height: '40px',
+        background: 'var(--border-subtle)',
+        flexShrink: 0,
     },
     // RIGHT
     right: {
@@ -209,13 +230,14 @@ const styles = {
     },
     photoFrame: {
         position: 'relative',
-        width: '320px',
-        height: '380px',
+        width: '100%',
+        height: '460px',
     },
     photo: {
         width: '100%',
         height: '100%',
         objectFit: 'cover',
+        objectPosition: 'center top',
         borderRadius: '28px',
         display: 'block',
         position: 'relative',
