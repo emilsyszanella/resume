@@ -33,7 +33,7 @@ const projects = [
         subtitle: "Automotive Embedded Systems",
         colSpan: 2,
         tags: ["Android Automotive", "AOSP", "Safety Critical", "JNI"],
-        description: "Engineered safety-compliant infotainment middleware for Honda vehicles. Implemented driver distraction mitigation logic (speed-dependent feature blocking) and audio priority arbitration systems adhering to strict automotive standards.",
+        description: "Embedded Software Engineer within the Wind River (Honda Motor) team, specializing in automotive digital dashboard systems. Architected new core functionalities and maintained safety-compliant infotainment middleware, ensuring high reliability and real-time performance across Honda's vehicle fleet.",
         icon: <Navigation size={24} color="#30D158" />,
         color: "#32d74b", // Automotive Green
         link: "#"
@@ -54,8 +54,8 @@ const projects = [
         title: "HealthCrisis Responder (VZLA)",
         subtitle: "Social Impact & Civic Tech",
         colSpan: 2,
-        tags: ["Geolocation", "Crowdsourcing", "Google Maps API", "Social Impact"],
-        description: "Developed a geo-location-based medication discovery platform during the severe 2014 health crisis in Venezuela. Built to solve a critical real-world problem, the app allowed users to crowdsource and locate scarce medical supplies in real-time within their geographical radius.",
+        tags: ["OCR & Barcode", "Real-time Mapping", "Inventory Sync", "Crisis Tech"],
+        description: "Engineered a civic-tech platform to combat the severe 2014 medication shortage in Venezuela. Integrated Optical Character Recognition (OCR) and Barcode scanning for rapid drug identification, mapping real-time pharmacy inventory levels to guide users to life-saving supplies.",
         icon: <Activity size={24} color="#FF3B30" />,
         color: "#FF3B30", // Urgent Red
         link: "#"
@@ -63,10 +63,15 @@ const projects = [
     {
         id: 6,
         title: "Amadita Games",
-        subtitle: "Enterprise Gamification Suite",
+        subtitle: "Clinical Gamification & Kiosk Ecosystem",
         colSpan: 6,
-        tags: ["Kiosk Mode", "Lock Task API", "Custom Launcher"],
-        description: "Architected a secure, custom Android Kiosk ecosystem for children in clinical waiting rooms from the ground up. As the sole technical owner, built the admin 'Manager' and 3 educational games locked to specific hardware devices, making all structural and architectural decisions.",
+        tags: ["Kiosk Mode", "Lock Task API", "Custom Launcher", "Local DB"],
+        description: "Architected a secure, custom Android Kiosk ecosystem for Amadita Clinical Laboratory (Dominican Republic). Engineered a robust 'Game Manager' that auto-launches on boot, overriding system navigation to prevent unauthorized exit, ensuring a safe, controlled environment for pediatric waiting rooms.",
+        metrics: [
+            "Hardware Lockdown: Custom launcher with secret-key exit protocols.",
+            "SuperMemory: Dynamic memory engine with 3 worlds and local DB leaderboards.",
+            "SuperScientist: Adaptive trivia system with 400+ randomized questions and accessibility modes (auditory/visual) for pre-readers."
+        ],
         icon: <Gamepad2 size={24} color="#BF5AF2" />,
         color: "#BF5AF2", // Gaming/Creative Purple
         link: "#"
