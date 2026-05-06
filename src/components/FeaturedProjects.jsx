@@ -1,84 +1,165 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ArrowUpRight, ShoppingCart, TrendingUp } from 'lucide-react';
+import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ShoppingCart } from 'lucide-react';
+import ProjectCard from './ProjectCard';
+import ProjectModal from './ProjectModal';
 
+// ---------------------------------------------------------------------------
+// Project data
+// Each entry has:
+//   card  — data shown in the grid card
+//   modal — extra data shown in the modal (role, challenge, link, etc.)
+// ---------------------------------------------------------------------------
 const projects = [
     {
         id: 0,
-        title: "Carrefour Spain",
-        subtitle: "Technical Lead & Mentorship",
         colSpan: 3,
-        tags: ["MVI Architecture", "Jetpack Compose", "Quality Engineering", "Team Leadership"],
-        description: "Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.",
-        metrics: ["13M Active Users", "Architected MVP & Delivery Pipeline", "Mentoring 3 engineers (Junior to Mid)"],
-        icon: <ShoppingCart size={24} color="#005b9f" />,
-        color: "#005b9f", // Carrefour Blue
-        link: "#"
+        card: {
+            icon: <ShoppingCart size={22} />,
+            title: 'Carrefour Spain',
+            subtitle: 'Technical Lead & Mentorship',
+            description: 'Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.',
+            metrics: ['13M Active Users', 'Architected MVI Delivery Pipeline', 'Mentoring 3 engineers (Junior → Mid)'],
+            tags: ['MVI Architecture', 'Jetpack Compose', 'Quality Engineering', 'Team Leadership'],
+        },
+        modal: {
+            icon: <ShoppingCart size={22} />,
+            title: 'Carrefour Spain',
+            subtitle: 'Technical Lead & Mentorship',
+            description: 'Leading technical delivery and architecture for the Carrefour App in Spain. Empowering and mentoring a squad of 3 engineers, establishing rigorous code quality standards, and enforcing TDD practices to ensure a highly scalable and stable platform.',
+            role: 'Technical Lead — defining architecture, reviewing PRs, and driving quality standards across the Android squad.', // TODO: refine
+            challenge: 'Migrating a legacy codebase to MVI + Jetpack Compose while maintaining a live app serving 13M users without regressions.', // TODO: refine
+            metrics: ['13M Active Users', 'Architected MVI Delivery Pipeline', 'Mentoring 3 engineers (Junior → Mid)'],
+            tags: ['MVI Architecture', 'Jetpack Compose', 'Quality Engineering', 'Team Leadership', 'Kotlin', 'CI/CD'],
+            link: null, // TODO: add Play Store link if desired
+            linkLabel: 'View on Play Store',
+        }
     },
     {
         id: 1,
-        title: "Inditex (ZARA)",
-        subtitle: "Global Retail App & Technical Leadership",
         colSpan: 3,
-        tags: ["Kotlin", "Clean Architecture", "WeChat SDK", "LiveTracking"],
-        description: "Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.",
-        metrics: ["+12M Active Users (22M Daily Traffic)", "+1.9M Global Transactions", "90% Test Coverage on new architecture"],
-        icon: <ShoppingBag size={24} color="#fff" />,
-        color: "var(--accent-color)", // Brand Blue
-        link: "#"
+        card: {
+            icon: <ShoppingBag size={22} />,
+            title: 'Inditex (ZARA)',
+            subtitle: 'Global Retail App & Technical Leadership',
+            description: 'Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity.',
+            metrics: ['+12M Active Users (22M Daily Traffic)', '+1.9M Global Transactions', '90% Test Coverage on new architecture'],
+            tags: ['Kotlin', 'Clean Architecture', 'WeChat SDK', 'LiveTracking'],
+        },
+        modal: {
+            icon: <ShoppingBag size={22} />,
+            title: 'Inditex (ZARA)',
+            subtitle: 'Global Retail App & Technical Leadership',
+            description: 'Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.',
+            role: 'Senior Android Engineer & Tech Lead — responsible for the WeChat integration, Clean Architecture migration, and mentoring a squad of 4 engineers.', // TODO: refine
+            challenge: 'Integrating the full Chinese OAuth ecosystem (WeChat Pay & Login) into a global codebase while respecting both PRC compliance requirements and Inditex security standards.', // TODO: refine
+            metrics: ['+12M Active Users (22M Daily Traffic)', '+1.9M Global Transactions', '90% Test Coverage on new architecture'],
+            tags: ['Kotlin', 'Clean Architecture', 'WeChat SDK', 'LiveTracking', 'CI/CD', 'Git Flow'],
+            link: null, // TODO: add Play Store link
+            linkLabel: 'View on Play Store',
+        }
     },
     {
         id: 2,
-        title: "Honda (Wind River)",
-        subtitle: "Automotive Embedded Systems",
         colSpan: 2,
-        tags: ["Android Automotive", "AOSP", "Safety Critical", "JNI"],
-        description: "Embedded Software Engineer within the Wind River (Honda Motor) team, specializing in automotive digital dashboard systems. Architected new core functionalities and maintained safety-compliant infotainment middleware, ensuring high reliability and real-time performance across Honda's vehicle fleet.",
-        icon: <Navigation size={24} color="#30D158" />,
-        color: "#32d74b", // Automotive Green
-        link: "#"
+        card: {
+            icon: <Navigation size={22} />,
+            title: 'Honda (Wind River)',
+            subtitle: 'Automotive Embedded Systems',
+            description: 'Embedded Software Engineer within the Wind River (Honda Motor) team, specializing in automotive digital dashboard systems. Architected new core functionalities and maintained safety-compliant infotainment middleware.',
+            tags: ['Android Automotive', 'AOSP', 'Safety Critical', 'JNI'],
+        },
+        modal: {
+            icon: <Navigation size={22} />,
+            title: 'Honda (Wind River)',
+            subtitle: 'Automotive Embedded Systems',
+            description: 'Embedded Software Engineer within the Wind River (Honda Motor) team, specializing in automotive digital dashboard systems. Architected new core functionalities and maintained safety-compliant infotainment middleware, ensuring high reliability and real-time performance across Honda\'s vehicle fleet.',
+            role: 'Embedded Android Engineer — middleware development for AAOS-based infotainment systems.', // TODO: refine
+            challenge: 'Ensuring deterministic real-time behavior and safety-compliance (ISO 26262 awareness) in a JNI bridge layer between the native C++ vehicle HAL and the Android application framework.', // TODO: refine
+            tags: ['Android Automotive OS', 'AOSP', 'Safety Critical', 'JNI', 'C++', 'HAL'],
+            link: null,
+        }
     },
     {
         id: 3,
-        title: "Janis (Logistic)",
-        subtitle: "Intelligent Supply Chain",
         colSpan: 2,
-        tags: ["Google Maps SDK", "Offline-First", "Real-time Sync"],
-        description: "Architected and delivered a high-efficiency logistics application from scratch as an independent Technical Lead. Defined the entire technical stack, solved complex routing challenges with custom internal maps, and implemented robust offline data synchronization.",
-        icon: <Map size={24} color="#FF9500" />,
-        color: "#FF9500", // Logistics Orange
-        link: "#"
+        card: {
+            icon: <Map size={22} />,
+            title: 'Janis (Logistic)',
+            subtitle: 'Intelligent Supply Chain',
+            description: 'Architected and delivered a high-efficiency logistics application from scratch as an independent Technical Lead. Defined the entire technical stack, solved complex routing challenges with custom internal maps, and implemented robust offline data synchronization.',
+            tags: ['Google Maps SDK', 'Offline-First', 'Real-time Sync'],
+        },
+        modal: {
+            icon: <Map size={22} />,
+            title: 'Janis (Logistic)',
+            subtitle: 'Intelligent Supply Chain',
+            description: 'Architected and delivered a high-efficiency logistics application from scratch as an independent Technical Lead. Defined the entire technical stack, solved complex routing challenges with custom internal maps, and implemented robust offline data synchronization.',
+            role: 'Sole Technical Lead & Android Developer — full ownership from architecture design to delivery.', // TODO: refine
+            challenge: 'Building a fully offline-first routing system with real-time sync, using custom map overlays to handle delivery zones not covered by standard Google Maps routes.', // TODO: refine
+            tags: ['Google Maps SDK', 'Offline-First', 'Real-time Sync', 'Kotlin', 'Room DB'],
+            link: null,
+        }
     },
     {
         id: 4,
-        title: "HealthCrisis Responder (VZLA)",
-        subtitle: "Social Impact & Civic Tech",
         colSpan: 2,
-        tags: ["OCR & Barcode", "Real-time Mapping", "Inventory Sync", "Crisis Tech"],
-        description: "Engineered a civic-tech platform to combat the severe 2014 medication shortage in Venezuela. Integrated Optical Character Recognition (OCR) and Barcode scanning for rapid drug identification, mapping real-time pharmacy inventory levels to guide users to life-saving supplies.",
-        icon: <Activity size={24} color="#FF3B30" />,
-        color: "#FF3B30", // Urgent Red
-        link: "#"
+        card: {
+            icon: <Activity size={22} />,
+            title: 'HealthCrisis Responder (VZLA)',
+            subtitle: 'Social Impact & Civic Tech',
+            description: 'Engineered a civic-tech platform to combat the severe 2014 medication shortage in Venezuela. Integrated OCR and Barcode scanning for rapid drug identification, mapping real-time pharmacy inventory levels to guide users to life-saving supplies.',
+            tags: ['OCR & Barcode', 'Real-time Mapping', 'Inventory Sync', 'Crisis Tech'],
+        },
+        modal: {
+            icon: <Activity size={22} />,
+            title: 'HealthCrisis Responder (VZLA)',
+            subtitle: 'Social Impact & Civic Tech',
+            description: 'Engineered a civic-tech platform to combat the severe 2014 medication shortage in Venezuela. Integrated Optical Character Recognition (OCR) and Barcode scanning for rapid drug identification, mapping real-time pharmacy inventory levels to guide users to life-saving supplies across the country.',
+            role: 'Founder & Sole Developer — designed, built, and launched the entire platform independently.', // TODO: refine
+            challenge: 'Implementing reliable OCR-based drug identification on low-end Android hardware common in Venezuela, with intermittent connectivity and a real-time crowd-sourced inventory backend.', // TODO: refine
+            metrics: [], // TODO: add user count if available
+            tags: ['OCR', 'Barcode Scanning', 'Real-time Mapping', 'Firebase', 'Crisis Tech'],
+            link: null,
+        }
     },
     {
-        id: 6,
-        title: "Amadita Games",
-        subtitle: "Clinical Gamification & Kiosk Ecosystem",
+        id: 5,
         colSpan: 6,
-        tags: ["Kiosk Mode", "Lock Task API", "Custom Launcher", "Local DB"],
-        description: "Architected a secure, custom Android Kiosk ecosystem for Amadita Clinical Laboratory (Dominican Republic). Engineered a robust 'Game Manager' that auto-launches on boot, overriding system navigation to prevent unauthorized exit, ensuring a safe, controlled environment for pediatric waiting rooms.",
-        metrics: [
-            "Hardware Lockdown: Custom launcher with secret-key exit protocols.",
-            "SuperMemory: Dynamic memory engine with 3 worlds and local DB leaderboards.",
-            "SuperScientist: Adaptive trivia system with 400+ randomized questions and accessibility modes (auditory/visual) for pre-readers."
-        ],
-        icon: <Gamepad2 size={24} color="#BF5AF2" />,
-        color: "#BF5AF2", // Gaming/Creative Purple
-        link: "#"
-    }
+        card: {
+            icon: <Gamepad2 size={22} />,
+            title: 'Amadita Games',
+            subtitle: 'Clinical Gamification & Kiosk Ecosystem',
+            description: 'Architected a secure, custom Android Kiosk ecosystem for Amadita Clinical Laboratory (Dominican Republic). Engineered a robust Game Manager that auto-launches on boot, overriding system navigation to prevent unauthorized exit, ensuring a safe, controlled environment for pediatric waiting rooms.',
+            metrics: [
+                'Hardware Lockdown: Custom launcher with secret-key exit protocols.',
+                'SuperMemory: Dynamic memory engine with 3 worlds and local DB leaderboards.',
+                'SuperScientist: Adaptive trivia system with 400+ randomized questions and accessibility modes.',
+            ],
+            tags: ['Kiosk Mode', 'Lock Task API', 'Custom Launcher', 'Local DB'],
+        },
+        modal: {
+            icon: <Gamepad2 size={22} />,
+            title: 'Amadita Games',
+            subtitle: 'Clinical Gamification & Kiosk Ecosystem',
+            description: 'Architected a secure, custom Android Kiosk ecosystem for Amadita Clinical Laboratory (Dominican Republic). Engineered a robust "Game Manager" that auto-launches on boot, overriding system navigation to prevent unauthorized exit, ensuring a safe, controlled environment for pediatric waiting rooms.',
+            role: 'Sole Android Architect & Developer — end-to-end design, build and deployment on physical kiosk hardware.', // TODO: refine
+            challenge: 'Implementing a tamper-proof kiosk using Android\'s Lock Task API with a secret-key exit protocol, while ensuring the Game Manager survives forced reboots and hardware manufacturer overlays.', // TODO: refine
+            metrics: [
+                'Hardware Lockdown: Custom launcher with secret-key exit protocols.',
+                'SuperMemory: Dynamic memory engine with 3 worlds and local DB leaderboards.',
+                'SuperScientist: 400+ randomized questions with auditory & visual accessibility modes.',
+            ],
+            tags: ['Kiosk Mode', 'Lock Task API', 'Custom Launcher', 'Local DB', 'Kotlin', 'AAOS'],
+            link: null,
+        }
+    },
 ];
 
+// ---------------------------------------------------------------------------
 const FeaturedProjects = () => {
+    const [activeModal, setActiveModal] = useState(null);
+
     return (
         <section id="projects" style={styles.section}>
             <div className="container" style={styles.container}>
@@ -98,53 +179,32 @@ const FeaturedProjects = () => {
                             key={project.id}
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: "-100px" }}
-                            transition={{ delay: index * 0.1, duration: 0.5 }}
-                            whileHover={{ borderColor: 'var(--border-focus)', backgroundColor: 'var(--card-bg-subtle)', transition: { duration: 0.2 } }}
+                            viewport={{ once: true, margin: '-100px' }}
+                            transition={{ delay: index * 0.08, duration: 0.5 }}
                             className={`project-card span-${project.colSpan || 1}`}
-                            style={styles.card}
                         >
-                            <div style={{ ...styles.iconBox, background: `var(--card-bg-subtle)` }}>
-                                {project.icon}
-                            </div>
-
-                            <div style={styles.content}>
-                                <h3 style={styles.title}>{project.title}</h3>
-                                <h4 style={{ ...styles.subtitle, color: project.color }}>{project.subtitle}</h4>
-
-                                <p style={styles.description}>{project.description}</p>
-
-                                {project.metrics && (
-                                    <div style={styles.metricsContainer}>
-                                        {project.metrics.map((metric, i) => (
-                                            <div key={i} style={styles.metricItem}>
-                                                <TrendingUp size={14} color="var(--accent-color)" />
-                                                <span>{metric}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                )}
-
-                                <div style={styles.tags}>
-                                    {project.tags.map(tag => (
-                                        <span key={tag} style={styles.tag}>{tag}</span>
-                                    ))}
-                                </div>
-                            </div>
+                            <ProjectCard
+                                {...project.card}
+                                clickable
+                                onReadMore={() => setActiveModal(project.modal)}
+                            />
                         </motion.div>
                     ))}
                 </div>
             </div>
 
-            {/* CSS for hover effects that are hard to do inline */}
-            {/* CSS hover removed in favor of Framer Motion */}
+            <ProjectModal
+                isOpen={activeModal !== null}
+                onClose={() => setActiveModal(null)}
+                data={activeModal}
+            />
         </section>
     );
 };
 
 const styles = {
     section: {
-        padding: '40px 0', /* Reduced from 120px */
+        padding: '40px 0',
     },
     container: {
         maxWidth: '1200px',
@@ -160,84 +220,12 @@ const styles = {
         fontWeight: '800',
         marginBottom: '16px',
         letterSpacing: '-1px',
+        color: 'var(--text-primary)',
     },
     subHeading: {
         fontSize: '18px',
         color: 'var(--text-secondary)',
     },
-    // Grid now handled in index.css for responsiveness
-    card: {
-        background: 'var(--bg-secondary)',
-        borderRadius: '24px',
-        padding: '40px 32px',
-        border: '1px solid var(--border-subtle)',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '24px',
-        transition: 'all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1)',
-    },
-    iconBox: {
-        width: '48px',
-        height: '48px',
-        borderRadius: '16px',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    content: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '12px',
-        flex: 1,
-    },
-    title: {
-        fontSize: '24px',
-        fontWeight: '700',
-    },
-    subtitle: {
-        fontSize: '14px',
-        fontWeight: '600',
-        textTransform: 'uppercase',
-        letterSpacing: '1px',
-    },
-    description: {
-        fontSize: '16px',
-        color: 'var(--text-secondary)',
-        lineHeight: '1.6',
-        flex: 1, // Pushes tags to bottom
-        marginBottom: '16px',
-    },
-    metricsContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '8px',
-        marginBottom: '20px',
-        background: 'var(--card-bg-subtle)',
-        padding: '12px 16px',
-        borderRadius: '12px',
-        borderLeft: '2px solid var(--accent-color)'
-    },
-    metricItem: {
-        display: 'flex',
-        alignItems: 'center',
-        gap: '8px',
-        fontSize: '13px',
-        color: 'var(--text-secondary)',
-        fontWeight: '500',
-    },
-    tags: {
-        display: 'flex',
-        flexWrap: 'wrap',
-        gap: '8px',
-    },
-    tag: {
-        fontSize: '12px',
-        padding: '6px 12px',
-        borderRadius: '12px',
-        background: 'var(--card-bg-subtle)',
-        border: '1px solid var(--border-subtle)',
-        color: 'var(--text-secondary)',
-    }
 };
 
 export default FeaturedProjects;
