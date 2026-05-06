@@ -1,123 +1,256 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Smartphone, Globe, Layers, Users } from 'lucide-react';
+import { MapPin, Globe, ShieldCheck } from 'lucide-react';
+
+const stats = [
+    { value: '11+', label: 'Years Engineering' },
+    { value: '+12.6M', label: 'Users Impacted' },
+    { value: 'App Acquired', label: 'Health-tech commercialized to a pharmacy chain' },
+];
+
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    }
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+        opacity: 1, y: 0,
+        transition: { duration: 0.7, ease: [0.2, 0.65, 0.3, 0.9] }
+    }
+};
 
 const AboutSection = () => {
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.2,
-                delayChildren: 0.3
-            }
-        }
-    };
-
-    const itemVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }
-        }
-    };
-
-    const techListVariants = {
-        hidden: { opacity: 1 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.5 }
-        }
-    };
-
-    const techTagVariants = {
-        hidden: { opacity: 0, y: 10, scale: 0.9 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: { type: 'spring', stiffness: 200 }
-        }
-    };
-
     return (
-        <section id="about" className="about-section">
-            <div className="container about-container">
-                {/* Left Column: Narrative */}
+        <section id="about" style={styles.section}>
+            <div className="container" style={styles.container}>
+
+                {/* LEFT: Narrative */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-100px" }}
-                    className="about-content"
+                    viewport={{ once: true, margin: '-80px' }}
+                    style={styles.left}
                 >
-                    <motion.h2 variants={itemVariants}>
-                        More Than Just Code. <br />
-                        <span className="text-gradient">Engineering Systems.</span>
+                    {/* Location badge */}
+                    <motion.div variants={itemVariants} style={styles.locationBadge}>
+                        <MapPin size={13} />
+                        Spain
+                        <span style={styles.separator}>·</span>
+                        <ShieldCheck size={13} />
+                        EU Passport
+                        <span style={styles.separator}>·</span>
+                        <Globe size={13} />
+                        Open to Global Remote
+                    </motion.div>
+
+                    {/* Value Statement */}
+                    <motion.h2 variants={itemVariants} style={styles.heading}>
+                        I don't fix bugs.{' '}
+                        <span style={styles.accentText}>
+                            I design systems that prevent them.
+                        </span>
                     </motion.h2>
 
-                    <motion.p variants={itemVariants} className="about-text">
-                        My engineering journey is defined by versatility and impact. From <strong>founding and exiting GeoHealth</strong> to architecting the mobile backbone of <strong>Inditex (ZARA)</strong> for over 12.6 million users. I don't just write code; I build viable, high-scale technical foundations.
+                    {/* Narrative */}
+                    <motion.p variants={itemVariants} style={styles.narrative}>
+                        It all started because I'd rather{' '}
+                        <strong>build an app than walk into every pharmacy in the city.</strong>{' '}
+                        That health-tech solution was later acquired by a national pharmacy chain —
+                        and it set the tone for everything since: turning real problems into
+                        products that actually ship, sustain, and scale.
+                    </motion.p>
+                    <motion.p variants={itemVariants} style={{ ...styles.narrative, marginTop: '-12px' }}>
+                        As a key technical reference for the Android backbone of{' '}
+                        <strong>Inditex (ZARA)</strong> — serving 12.6M users — to driving
+                        quality standards at{' '}
+                        <strong>Carrefour Spain</strong> — I combine native Android mastery{' '}
+                        <em>(Kotlin · Compose · Java)</em> with a product mindset: I don't just
+                        code features, I analyze viability, design for longevity, and build
+                        systems that <strong>outlast the sprint they were born in.</strong>
                     </motion.p>
 
-                    <motion.p variants={itemVariants} className="about-text">
-                        As a <strong>Technical Lead & Senior Architect</strong>, I bridge the gap between business vision and technical execution. Currently empowering the engineering team at <strong>Carrefour Spain</strong>, I lead by example, mentoring engineers and establishing rigorous testing standards.
-                    </motion.p>
-
-                    <motion.p variants={itemVariants} className="about-text">
-                        I thrive on complexity and code quality. Whether it's integrating <strong>Chinese OAuth ecosystems (WeChat)</strong>, defining strict <strong>TDD/BDD</strong> practices, or establishing <strong>clean architecture</strong> patterns across distributed squads, I deliver engineering excellence.
-                    </motion.p>
-
-                    <motion.div variants={techListVariants} className="tech-stack">
-                        {['Kotlin', 'Jetpack Compose', 'Clean Arch', 'CI/CD', 'Google APIs', 'Java'].map((tech) => (
-                            <motion.span
-                                key={tech}
-                                variants={techTagVariants}
-                                whileHover={{ scale: 1.05, backgroundColor: 'var(--border-focus)' }}
-                                className="tech-tag"
-                            >
-                                {tech}
-                            </motion.span>
+                    {/* Stats row */}
+                    <motion.div variants={containerVariants} style={styles.statsGrid}>
+                        {stats.map((stat, i) => (
+                            <motion.div key={i} variants={itemVariants} style={styles.statCard}>
+                                <span style={styles.statValue}>
+                                    {stat.value.split('\n').map((line, j) => (
+                                        <span key={j} style={{ display: 'block', lineHeight: '1.1' }}>{line}</span>
+                                    ))}
+                                </span>
+                                <span style={styles.statLabel}>{stat.label}</span>
+                            </motion.div>
                         ))}
                     </motion.div>
                 </motion.div>
 
-                {/* Right Column: Visual Stats / Bento Grid */}
+                {/* RIGHT: Photo */}
                 <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    whileInView="visible"
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    className="about-grid"
+                    transition={{ duration: 0.8, ease: [0.2, 0.65, 0.3, 0.9] }}
+                    style={styles.right}
                 >
-                    <motion.div variants={itemVariants} className="bento-card card-large">
-                        <div className="photo-placeholder">
-                            {/* Replace src with your actual photo URL */}
-                            <img src="./profile.jpeg" alt="Emilsys Zanella" className="profile-photo" />
-                        </div>
-                    </motion.div>
+                    <div style={styles.photoFrame}>
+                        <img
+                            src="./profile.jpeg"
+                            alt="Emilsys Zanella — Tech Lead & Android Engineer"
+                            style={styles.photo}
+                        />
+                        {/* Decorative ring */}
+                        <div style={styles.photoRing} />
+                    </div>
 
-                    <motion.div variants={itemVariants} className="bento-card">
-                        <Smartphone size={32} color="var(--accent-color)" />
-                        <h3 className="card-title">Native</h3>
-                        <p className="card-text">100% Fluid mobile performance.</p>
-                    </motion.div>
-
-                    <motion.div variants={itemVariants} whileHover={{ y: -5 }} className="bento-card">
-                        <Users size={32} color="var(--success-color)" />
-                        <h3 className="card-title">Tech Lead</h3>
-                        <p className="card-text">Mentoring & Quality Advocate</p>
-                    </motion.div>
-
-                    <motion.div variants={itemVariants} className="bento-card card-wide">
-                        <h3 className="stat-number" style={{ marginBottom: 0 }}>+12.6</h3>
-                        <h3 className="stat-number" style={{ fontSize: '0.96em' }}>Millions Users Impacted.</h3>
-                    </motion.div>
+                    {/* Identity chip below photo */}
+                    <div style={styles.identityChip}>
+                        <span style={styles.chipName}>Emilsys Zanella</span>
+                        <span style={styles.chipRole}>Tech Lead & Android Engineer</span>
+                    </div>
                 </motion.div>
+
             </div>
         </section>
     );
+};
+
+const styles = {
+    section: {
+        padding: '100px 0',
+        background: 'var(--bg-primary)',
+    },
+    container: {
+        display: 'grid',
+        gridTemplateColumns: '1fr 380px',
+        gap: '80px',
+        alignItems: 'center',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 24px',
+    },
+    // LEFT
+    left: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '32px',
+    },
+    locationBadge: {
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '6px',
+        fontSize: '13px',
+        fontWeight: '500',
+        color: 'var(--text-secondary)',
+        background: 'var(--card-bg-subtle)',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: '20px',
+        padding: '6px 14px',
+        width: 'fit-content',
+    },
+    separator: {
+        margin: '0 2px',
+        color: 'var(--text-tertiary)',
+    },
+    heading: {
+        fontSize: 'clamp(32px, 4vw, 52px)',
+        fontWeight: '800',
+        lineHeight: '1.1',
+        letterSpacing: '-1.5px',
+        color: 'var(--text-primary)',
+        margin: 0,
+    },
+    accentText: {
+        color: 'var(--accent-color)',
+    },
+    narrative: {
+        fontSize: '17px',
+        color: 'var(--text-secondary)',
+        lineHeight: '1.75',
+        maxWidth: '580px',
+        margin: 0,
+    },
+    statsGrid: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(4, 1fr)',
+        gap: '12px',
+        borderTop: '1px solid var(--border-subtle)',
+        paddingTop: '32px',
+    },
+    statCard: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '6px',
+    },
+    statValue: {
+        fontSize: '26px',
+        fontWeight: '800',
+        color: 'var(--text-primary)',
+        letterSpacing: '-0.5px',
+        lineHeight: '1.15',
+    },
+    statLabel: {
+        fontSize: '12px',
+        color: 'var(--text-tertiary)',
+        lineHeight: '1.4',
+        fontWeight: '500',
+    },
+    // RIGHT
+    right: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '20px',
+    },
+    photoFrame: {
+        position: 'relative',
+        width: '320px',
+        height: '380px',
+    },
+    photo: {
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        borderRadius: '28px',
+        display: 'block',
+        position: 'relative',
+        zIndex: 1,
+    },
+    photoRing: {
+        position: 'absolute',
+        inset: '-6px',
+        borderRadius: '34px',
+        border: '1.5px solid var(--border-focus)',
+        zIndex: 0,
+        opacity: 0.6,
+    },
+    identityChip: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '4px',
+        background: 'var(--bg-secondary)',
+        border: '1px solid var(--border-subtle)',
+        borderRadius: '16px',
+        padding: '14px 24px',
+        textAlign: 'center',
+        width: '100%',
+    },
+    chipName: {
+        fontSize: '16px',
+        fontWeight: '700',
+        color: 'var(--text-primary)',
+    },
+    chipRole: {
+        fontSize: '13px',
+        fontWeight: '500',
+        color: 'var(--accent-color)',
+    },
 };
 
 export default AboutSection;
