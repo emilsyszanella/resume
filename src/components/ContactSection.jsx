@@ -11,11 +11,11 @@ const ContactSection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                    <span style={styles.badge}>Next Steps</span>
-                    <h2 style={styles.heading}>Let's Architect the Future.</h2>
+                    <span style={styles.badge}>Let's Talk</span>
+                    <h2 style={styles.heading}>Your Next Android Tech Lead.</h2>
                     <p style={styles.text}>
-                        Specialized in high-performance Android systems and scalable architectures.
-                        Available for consulting, senior engineering roles, or strategic partnerships.
+                        If you're scaling an Android product to millions — or building the team
+                        that will — I'm the technical reference you're looking for.
                     </p>
 
                     <div style={styles.actions}>
@@ -50,7 +50,7 @@ const ContactSection = () => {
                     </div>
 
                     <footer style={styles.footer}>
-                        <p>© {new Date().getFullYear()} Emilsys Zanella. Crafted with precision.</p>
+                        <p>Designed & developed by Emilsys Zanella — Spain, {new Date().getFullYear()}.</p>
                     </footer>
                 </motion.div>
             </div>

@@ -60,7 +60,8 @@ const HeroSection = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <p style={styles.description}>
-                        I don't just build apps; I define the standard. Bridging the gap between business vision, rigorous code quality, and rock-solid engineering. Empowering engineering teams at <strong>Carrefour</strong> and <strong>Inditex (ZARA)</strong> to ship high-scale native solutions with confidence.
+                        Building the mobile systems that scale to millions —
+                        and leading the engineers who build them.
                     </p>
                 </motion.div>
 
@@ -88,27 +89,7 @@ const HeroSection = () => {
                     </motion.a>
                 </motion.div>
 
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
-                    style={styles.statsRow}
-                >
-                    <div style={styles.statItem}>
-                        <span style={styles.statValue}>11+</span>
-                        <span style={styles.statLabel}>Years Exp.</span>
-                    </div>
-                    <div style={styles.separator}></div>
-                    <div style={styles.statItem}>
-                        <span style={styles.statValue}>+12.6M</span>
-                        <span style={styles.statLabel}>Users Impacted</span>
-                    </div>
-                    <div style={styles.separator}></div>
-                    <div style={styles.statItem}>
-                        <span style={styles.statValue}>Top 1%</span>
-                        <span style={styles.statLabel}>Talent</span>
-                    </div>
-                </motion.div>
+
             </div>
         </section>
     );
@@ -192,35 +173,6 @@ const styles = {
         background: 'var(--card-bg-subtle)',
         backdropFilter: 'blur(10px)',
     },
-    statsRow: {
-        display: 'flex',
-        gap: '32px',
-        alignItems: 'center',
-        borderTop: '1px solid var(--border-subtle)',
-        paddingTop: '32px',
-    },
-    statItem: {
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '4px',
-    },
-    statValue: {
-        fontSize: '24px',
-        fontWeight: '700',
-        color: 'var(--text-primary)',
-    },
-    statLabel: {
-        fontSize: '13px',
-        color: 'var(--text-secondary)',
-        textTransform: 'uppercase',
-        letterSpacing: '1px',
-        fontWeight: '500',
-    },
-    separator: {
-        width: '1px',
-        height: '40px',
-        background: 'var(--border-subtle)',
-    }
 };
 
 export default HeroSection;
