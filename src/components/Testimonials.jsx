@@ -45,7 +45,7 @@ const Testimonials = () => {
                     viewport={{ once: true }}
                     style={styles.header}
                 >
-                    <span style={styles.badge}>Social Proof</span>
+                    <span style={styles.badge}>Testimonials</span>
                     <h2 style={styles.heading}>What Colleagues Say.</h2>
                 </motion.div>
 

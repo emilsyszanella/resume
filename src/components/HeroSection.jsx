@@ -80,12 +80,12 @@ const HeroSection = () => {
                         View Selected Work <ChevronRight size={20} />
                     </motion.a>
                     <motion.a
-                        href="#contact"
+                        href="#about"
                         style={styles.secondaryButton}
                         whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.1)' }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Contact Me
+                        About Me
                     </motion.a>
                 </motion.div>
 

@@ -43,7 +43,7 @@ const projects = [
             title: 'Inditex (ZARA)',
             subtitle: 'Global Retail App & Technical Leadership',
             description: 'Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity.',
-            metrics: ['+12M Active Users (22M Daily Traffic)', '+1.9M Global Transactions', '90% Test Coverage on new architecture'],
+            metrics: ['+12.6M Active Users (22M Daily Traffic)', '+1.9M Global Transactions', '90% Test Coverage on new architecture'],
             tags: ['Kotlin', 'Clean Architecture', 'WeChat SDK', 'LiveTracking'],
         },
         modal: {
@@ -53,7 +53,7 @@ const projects = [
             description: 'Spearheaded critical architectural integrations for the global Zara app (+50M downloads). Mentored 4 engineers and led the technical implementation of the WeChat ecosystem. Established Clean Architecture patterns that improved code maintainability and team velocity across distributed squads.',
             role: 'Senior Android Engineer & Tech Lead — responsible for the WeChat integration, Clean Architecture migration, and mentoring a squad of 4 engineers.', // TODO: refine
             challenge: 'Integrating the full Chinese OAuth ecosystem (WeChat Pay & Login) into a global codebase while respecting both PRC compliance requirements and Inditex security standards.', // TODO: refine
-            metrics: ['+12M Active Users (22M Daily Traffic)', '+1.9M Global Transactions', '90% Test Coverage on new architecture'],
+            metrics: ['+12.6M Active Users (22M Daily Traffic)', '+1.9M Global Transactions', '90% Test Coverage on new architecture'],
             tags: ['Kotlin', 'Clean Architecture', 'WeChat SDK', 'LiveTracking', 'CI/CD', 'Git Flow'],
             link: null, // TODO: add Play Store link
             linkLabel: 'View on Play Store',

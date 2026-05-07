@@ -38,7 +38,7 @@ const ProjectCard = ({
             className={`project-card-unified ${className}`}
             style={{
                 ...cardStyles.card,
-                cursor: clickable ? 'default' : 'default',
+                cursor: clickable ? 'pointer' : 'default',
             }}
         >
             {/* Header: title + subtitle LEFT, icon RIGHT */}
