@@ -17,8 +17,8 @@ const Navbar = () => {
         const sections = document.querySelectorAll('section');
         const observerOptions = {
             root: null,
-            // Crea una "banda de detección" en el tercio superior de la pantalla
-            // para que detecte secciones sin importar si son más altas que el viewport (ej. móvil)
+            // Creates a "detection band" in the upper third of the screen
+            // so it detects sections even if they are taller than the viewport (e.g., mobile)
             rootMargin: '-20% 0px -60% 0px',
             threshold: 0
         };
