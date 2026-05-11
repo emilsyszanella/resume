@@ -102,7 +102,7 @@ const Navbar = () => {
                             <a href="#testimonials" style={getLinkStyle('testimonials')} aria-current={activeSection === 'testimonials' ? 'page' : undefined}>Testimonials</a>
                         </li>
                         <li>
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" style={{ ...styles.cta, background: 'transparent', border: '1px solid var(--border-focus)' }}>
+                            <a href="./resume.pdf" target="_blank" rel="noopener noreferrer" style={{ ...styles.cta, background: 'transparent', border: '1px solid var(--border-focus)' }}>
                                 Resume
                             </a>
                         </li>
@@ -162,7 +162,7 @@ const Navbar = () => {
                                 <a href="#contact" onClick={toggleMenu} style={getMobileLinkStyle('contact')} aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</a>
                             </li>
                             <li>
-                                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={toggleMenu} style={{ color: 'var(--text-secondary)' }}>Resume PDF</a>
+                                <a href="./resume.pdf" target="_blank" rel="noopener noreferrer" onClick={toggleMenu} style={{ color: 'var(--text-secondary)' }}>Resume PDF</a>
                             </li>
                         </ul>
                     </motion.div>
