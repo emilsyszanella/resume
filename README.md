@@ -224,8 +224,10 @@ Add a new object to the `projects` array in `FeaturedProjects.jsx`:
             { label: 'Kotlin', category: 'Language' },
             { label: 'Clean Architecture', category: 'Architecture' },
         ],
-        link: 'https://play.google.com/...', // optional
-        linkLabel: 'View on Play Store',      // optional
+        year: '2026 - Present',
+        links: [
+            { url: 'https://play.google.com/...', label: 'Play Store' }
+        ], // optional
     }
 }
 ```
