@@ -1,6 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Smartphone } from 'lucide-react';
+import { ChevronRight, Award, Users, TrendingUp } from 'lucide-react';
+
+const stats = [
+    { icon: <Award size={26} color="var(--accent-color)" />, value: '11+', label: 'Years Engineering' },
+    { icon: <Users size={26} color="var(--accent-color)" />, value: '+12.6M', label: 'Users Impacted' },
+    { icon: <TrendingUp size={26} color="var(--accent-color)" />, value: 'Acquired', label: 'Health-tech App Exit' },
+];
 
 const HeroSection = () => {
     return (
@@ -90,6 +96,62 @@ const HeroSection = () => {
                 </motion.div>
 
 
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    style={styles.statsContainer}
+                    className="stats-container"
+                >
+                    {stats.map((stat, i) => (
+                        <motion.div
+                            key={i}
+                            style={styles.statCard}
+                            className="stat-card"
+                            whileHover={{ y: -5, background: 'var(--bg-secondary)' }}
+                            aria-label={`${stat.value} ${stat.label}`}
+                        >
+                            <div style={styles.iconContainer} className="stat-icon" aria-hidden="true">
+                                {stat.icon}
+                            </div>
+                            <div style={styles.statContent} className="stat-content" aria-hidden="true">
+                                <span className="text-gradient stat-value" style={styles.statValue}>{stat.value}</span>
+                                <span style={styles.statLabel} className="stat-label">{stat.label}</span>
+                            </div>
+                        </motion.div>
+                    ))}
+                </motion.div>
+
+                {/* Local styles for single-line mobile responsiveness */}
+                <style>{`
+                    @media (max-width: 768px) {
+                        .stats-container {
+                            gap: 12px !important;
+                        }
+                        .stat-card {
+                            flex-direction: column !important;
+                            align-items: center !important;
+                            text-align: center !important;
+                            gap: 8px !important;
+                            padding: 8px !important;
+                        }
+                        .stat-icon {
+                            width: 40px !important;
+                            height: 40px !important;
+                        }
+                        .stat-icon svg {
+                            width: 20px !important;
+                            height: 20px !important;
+                        }
+                        .stat-value {
+                            font-size: 22px !important;
+                        }
+                        .stat-label {
+                            font-size: 10px !important;
+                            letter-spacing: 0px !important;
+                        }
+                    }
+                `}</style>
             </div>
         </section>
     );
@@ -172,6 +234,52 @@ const styles = {
         fontWeight: '600',
         background: 'var(--card-bg-subtle)',
         backdropFilter: 'blur(10px)',
+    },
+    statsContainer: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '24px',
+        marginTop: '64px',
+    },
+    statCard: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
+        padding: '16px',
+        borderRadius: '16px',
+        transition: 'background 0.3s, transform 0.3s',
+        cursor: 'default',
+    },
+    iconContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '56px',
+        height: '56px',
+        borderRadius: '16px',
+        background: 'var(--bg-primary)',
+        border: '1px solid var(--border-subtle)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+        flexShrink: 0,
+    },
+    statContent: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '2px',
+    },
+    statValue: {
+        fontSize: '32px',
+        fontWeight: '800',
+        letterSpacing: '-1px',
+        display: 'inline-block', // Crucial for text-gradient
+    },
+    statLabel: {
+        fontSize: '13px',
+        color: 'var(--text-tertiary)',
+        lineHeight: '1.4',
+        fontWeight: '600',
+        textTransform: 'uppercase',
+        letterSpacing: '0.5px',
     },
 };
 

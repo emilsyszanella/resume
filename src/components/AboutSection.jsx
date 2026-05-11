@@ -2,12 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin, Globe, ShieldCheck } from 'lucide-react';
 
-const stats = [
-    { value: '11+', label: 'Years Engineering' },
-    { value: '+12.6M', label: 'Users Impacted' },
-    { value: 'App Acquired', label: 'Acquired by a pharmacy chain' },
-];
-
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -105,27 +99,6 @@ const AboutSection = () => {
 
             </div>
 
-            {/* ── Stats bar: full width, below both columns ── */}
-            <motion.div
-                variants={containerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                style={styles.statsBar}
-            >
-                {stats.map((stat, i) => (
-                    <React.Fragment key={i}>
-                        <motion.div variants={itemVariants} style={styles.statCard}>
-                            <span style={styles.statValue}>{stat.value}</span>
-                            <span style={styles.statLabel}>{stat.label}</span>
-                        </motion.div>
-                        {i < stats.length - 1 && (
-                            <div style={styles.statDivider} />
-                        )}
-                    </React.Fragment>
-                ))}
-            </motion.div>
-
         </section>
     );
 };
@@ -184,42 +157,6 @@ const styles = {
         lineHeight: '1.75',
         maxWidth: '580px',
         margin: 0,
-    },
-    statsBar: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '40px',
-        maxWidth: '1200px',
-        margin: '0 auto',
-        marginTop: '48px',
-        padding: '40px 24px 0',
-        borderTop: '1px solid var(--border-subtle)',
-    },
-    statCard: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '4px',
-    },
-    statValue: {
-        fontSize: '28px',
-        fontWeight: '800',
-        color: 'var(--text-primary)',
-    },
-    statLabel: {
-        fontSize: '12px',
-        color: 'var(--text-tertiary)',
-        lineHeight: '1.4',
-        fontWeight: '500',
-        textAlign: 'center',
-        maxWidth: '160px',
-    },
-    statDivider: {
-        width: '1px',
-        height: '40px',
-        background: 'var(--border-subtle)',
-        flexShrink: 0,
     },
     // RIGHT
     right: {
