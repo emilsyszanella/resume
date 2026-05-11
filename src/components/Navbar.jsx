@@ -17,8 +17,10 @@ const Navbar = () => {
         const sections = document.querySelectorAll('section');
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.4 // Trigger when 40% visible
+            // Crea una "banda de detección" en el tercio superior de la pantalla
+            // para que detecte secciones sin importar si son más altas que el viewport (ej. móvil)
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -37,12 +39,36 @@ const Navbar = () => {
         };
     }, []);
 
+    // Mobile Menu Body Scroll Lock & Escape Key
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            const handleKeyDown = (e) => {
+                if (e.key === 'Escape') setIsMobileMenuOpen(false);
+            };
+            document.addEventListener('keydown', handleKeyDown);
+            return () => {
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', handleKeyDown);
+            };
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [isMobileMenuOpen]);
+
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     const getLinkStyle = (sectionId) => ({
         ...styles.link,
         color: activeSection === sectionId ? 'var(--text-primary)' : 'var(--text-secondary)',
         fontWeight: activeSection === sectionId ? '600' : '500',
+    });
+
+    const getMobileLinkStyle = (sectionId) => ({
+        color: activeSection === sectionId ? 'var(--accent-color)' : 'var(--text-primary)',
+        fontWeight: activeSection === sectionId ? '700' : '600',
+        transition: 'color 0.2s',
     });
 
     return (
@@ -64,10 +90,16 @@ const Navbar = () => {
                     {/* Desktop Links */}
                     <ul style={styles.desktopLinks} className="desktop-only">
                         <li>
-                            <a href="#about" style={getLinkStyle('about')}>About</a>
+                            <a href="#about" style={getLinkStyle('about')} aria-current={activeSection === 'about' ? 'page' : undefined}>About</a>
                         </li>
                         <li>
-                            <a href="#projects" style={getLinkStyle('projects')}>Work</a>
+                            <a href="#philosophy" style={getLinkStyle('philosophy')} aria-current={activeSection === 'philosophy' ? 'page' : undefined}>Expertise</a>
+                        </li>
+                        <li>
+                            <a href="#projects" style={getLinkStyle('projects')} aria-current={activeSection === 'projects' ? 'page' : undefined}>Work</a>
+                        </li>
+                        <li>
+                            <a href="#testimonials" style={getLinkStyle('testimonials')} aria-current={activeSection === 'testimonials' ? 'page' : undefined}>Testimonials</a>
                         </li>
                         <li>
                             <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" style={{ ...styles.cta, background: 'transparent', border: '1px solid var(--border-focus)' }}>
@@ -77,6 +109,7 @@ const Navbar = () => {
                         <li>
                             <a
                                 href="#contact"
+                                aria-current={activeSection === 'contact' ? 'page' : undefined}
                                 style={{
                                     ...styles.cta,
                                     background: activeSection === 'contact' ? 'var(--text-primary)' : 'var(--card-bg-subtle)',
@@ -114,13 +147,19 @@ const Navbar = () => {
                     >
                         <ul style={styles.mobileLinks}>
                             <li>
-                                <a href="#about" onClick={toggleMenu} style={getLinkStyle('about')}>About</a>
+                                <a href="#about" onClick={toggleMenu} style={getMobileLinkStyle('about')} aria-current={activeSection === 'about' ? 'page' : undefined}>About</a>
                             </li>
                             <li>
-                                <a href="#projects" onClick={toggleMenu} style={getLinkStyle('projects')}>Work</a>
+                                <a href="#philosophy" onClick={toggleMenu} style={getMobileLinkStyle('philosophy')} aria-current={activeSection === 'philosophy' ? 'page' : undefined}>Expertise</a>
                             </li>
                             <li>
-                                <a href="#contact" onClick={toggleMenu} style={{ color: activeSection === 'contact' ? 'var(--accent-color)' : 'var(--text-primary)' }}>Contact</a>
+                                <a href="#projects" onClick={toggleMenu} style={getMobileLinkStyle('projects')} aria-current={activeSection === 'projects' ? 'page' : undefined}>Work</a>
+                            </li>
+                            <li>
+                                <a href="#testimonials" onClick={toggleMenu} style={getMobileLinkStyle('testimonials')} aria-current={activeSection === 'testimonials' ? 'page' : undefined}>Testimonials</a>
+                            </li>
+                            <li>
+                                <a href="#contact" onClick={toggleMenu} style={getMobileLinkStyle('contact')} aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</a>
                             </li>
                             <li>
                                 <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={toggleMenu} style={{ color: 'var(--text-secondary)' }}>Resume PDF</a>

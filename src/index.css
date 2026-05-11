@@ -178,7 +178,7 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
   .project-card.span-6 { grid-column: span 2; }
-  .project-card.span-3 { grid-column: span 2; }
+  .project-card.span-3 { grid-column: span 1; }
   .project-card.span-2 { grid-column: span 1; }
   
   /* Make the 5th item (HealthCrisis) span 2 on tablet to avoid orphan */
