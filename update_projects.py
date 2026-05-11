@@ -1,16 +1,9 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { ShoppingBag, Navigation, Map, Activity, Stethoscope, Gamepad2, ShoppingCart } from 'lucide-react';
-import ProjectCard from './ProjectCard';
-import ProjectModal from './ProjectModal';
+import re
 
-// ---------------------------------------------------------------------------
-// Project data
-// Each entry has:
-//   card  — data shown in the grid card
-//   modal — extra data shown in the modal (role, challenge, link, etc.)
-// ---------------------------------------------------------------------------
-const projects = [
+with open('/Users/ezanella/Documents/GitHub/portfolio-2025/src/components/FeaturedProjects.jsx', 'r') as f:
+    content = f.read()
+
+new_projects = """const projects = [
     {
         id: 0,
         colSpan: 2,
@@ -77,7 +70,7 @@ const projects = [
             subtitle: 'Clinical Gamification & Kiosk Ecosystem',
             description: 'Architected a secure, custom Android Kiosk ecosystem for Amadita Clinical Laboratory (Dominican Republic). Engineered a robust "Game Manager" that auto-launches on boot, overriding system navigation to prevent unauthorized exit, ensuring a safe, controlled environment for pediatric waiting rooms.',
             role: 'Sole Android Architect & Developer — end-to-end design, build and deployment on physical kiosk hardware.',
-            challenge: 'Implementing a tamper-proof kiosk using Android\'s Lock Task API with a secret-key exit protocol, while ensuring the Game Manager survives forced reboots and hardware manufacturer overlays.',
+            challenge: 'Implementing a tamper-proof kiosk using Android\\'s Lock Task API with a secret-key exit protocol, while ensuring the Game Manager survives forced reboots and hardware manufacturer overlays.',
             metrics: [
                 'Hardware Lockdown: Secret-key exit protocols',
                 'SuperMemory: 3 game worlds & local leaderboards',
@@ -100,7 +93,7 @@ const projects = [
             icon: <Navigation size={22} />,
             title: 'Honda (Wind River)',
             subtitle: 'Automotive Embedded Systems',
-            description: 'Embedded Software Engineer within the Wind River (Honda Motor) team, specializing in automotive digital dashboard systems. Architected new core functionalities and maintained safety-compliant infotainment middleware, ensuring high reliability and real-time performance across Honda\'s vehicle fleet.',
+            description: 'Embedded Software Engineer within the Wind River (Honda Motor) team, specializing in automotive digital dashboard systems. Architected new core functionalities and maintained safety-compliant infotainment middleware, ensuring high reliability and real-time performance across Honda\\'s vehicle fleet.',
             role: 'Embedded Android Engineer — middleware development for AAOS-based infotainment systems.',
             challenge: 'Ensuring deterministic real-time behavior and safety-compliance (ISO 26262 awareness) in a JNI bridge layer between the native C++ vehicle HAL and the Android application framework.',
             tags: ['Android Automotive OS', 'AOSP', 'Safety Critical', 'JNI', 'C++', 'HAL'],
@@ -148,89 +141,9 @@ const projects = [
             link: null,
         }
     },
-];
+];"""
 
-// ---------------------------------------------------------------------------
-const FeaturedProjects = () => {
-    const [activeModal, setActiveModal] = useState(null);
+new_content = re.sub(r'const projects = \[.*?\];', new_projects, content, flags=re.DOTALL)
 
-    return (
-        <section id="projects" style={styles.section}>
-            <div className="container" style={styles.container}>
-                <motion.div
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    style={styles.header}
-                >
-                    <span style={styles.badge}>Selected Work</span>
-                    <h2 style={styles.heading}>Selected Highlights</h2>
-                    <p style={styles.subHeading}>Scalable Architectures. Embedded Systems. Critical Solutions.</p>
-                </motion.div>
-
-                <div className="projects-grid">
-                    {projects.map((project, index) => (
-                        <motion.div
-                            key={project.id}
-                            initial={{ opacity: 0, y: 40 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true, margin: '-100px' }}
-                            transition={{ delay: index * 0.08, duration: 0.5 }}
-                            className={`project-card span-${project.colSpan || 1}`}
-                            style={{ height: '100%' }}
-                        >
-                            <ProjectCard
-                                {...project.card}
-                                clickable
-                                onReadMore={() => setActiveModal(project.modal)}
-                            />
-                        </motion.div>
-                    ))}
-                </div>
-            </div>
-
-            <ProjectModal
-                isOpen={activeModal !== null}
-                onClose={() => setActiveModal(null)}
-                data={activeModal}
-            />
-        </section>
-    );
-};
-
-const styles = {
-    section: {
-        padding: '40px 0',
-    },
-    container: {
-        maxWidth: '1200px',
-        margin: '0 auto',
-        padding: '0 24px',
-    },
-    header: {
-        marginBottom: '64px',
-        maxWidth: '600px',
-    },
-    badge: {
-        fontSize: '14px',
-        fontWeight: '600',
-        color: 'var(--accent-color)',
-        textTransform: 'uppercase',
-        letterSpacing: '2px',
-        display: 'block',
-        marginBottom: '16px',
-    },
-    heading: {
-        fontSize: '48px',
-        fontWeight: '800',
-        marginBottom: '16px',
-        letterSpacing: '-1px',
-        color: 'var(--text-primary)',
-    },
-    subHeading: {
-        fontSize: '18px',
-        color: 'var(--text-secondary)',
-    },
-};
-
-export default FeaturedProjects;
+with open('/Users/ezanella/Documents/GitHub/portfolio-2025/src/components/FeaturedProjects.jsx', 'w') as f:
+    f.write(new_content)

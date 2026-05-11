@@ -180,11 +180,6 @@ button {
   .project-card.span-6 { grid-column: span 2; }
   .project-card.span-3 { grid-column: span 1; }
   .project-card.span-2 { grid-column: span 1; }
-  
-  /* Make the 5th item (HealthCrisis) span 2 on tablet to avoid orphan */
-  .project-card:nth-child(5) {
-     grid-column: span 2;
-  }
 }
 
 @media (max-width: 768px) {
