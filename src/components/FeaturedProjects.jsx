@@ -59,10 +59,9 @@ const projects = [
                 { label: 'CI/CD', category: 'DevOps' },
                 { label: 'Technical Mentorship', category: 'Leadership' },
             ],
-            year: '2023 - Present',
+            year: '2026 - Present',
             links: [
-                { url: 'https://play.google.com/store/apps/details?id=com.carrefour.espana', label: 'Play Store' },
-                { url: 'https://apps.apple.com/es/app/carrefour-espa%C3%B1a/id585238053', label: 'App Store' }
+                { url: 'https://play.google.com/store/apps/details?id=com.munrodev.crfmobile', label: 'Play Store' }
             ],
         }
     },
@@ -114,7 +113,7 @@ const projects = [
                 { label: 'CI/CD', category: 'DevOps' },
                 { label: 'Technical Mentorship', category: 'Leadership' },
             ],
-            year: '2019 - 2022',
+            year: '2021 - 2025',
             links: [
                 { url: 'https://play.google.com/store/apps/details?id=com.inditex.zara', label: 'Play Store' }
             ],
@@ -165,7 +164,10 @@ const projects = [
                 { label: 'Game Development', category: 'Feature' },
             ],
             year: '2021',
-            links: [],
+            links: [
+                { url: 'https://memoria-s8k0.andro.io/', label: 'Super Memoria' },
+                { url: 'https://play.google.com/store/apps/details?id=com.Keycore.supercientifico&hl=es', label: 'Super Científico' }
+            ],
         }
     },
     {
@@ -223,9 +225,9 @@ const projects = [
         colSpan: 2,
         card: {
             icon: <Building2 size={22} />,
-            title: 'Volveremos Aragón',
+            title: 'Volveremos si tu vuelves',
             subtitle: 'Senior Mobile Engineer · Cross-Platform',
-            description: 'Contributed as a Senior Mobile Engineer to Volveremos Aragón, a large-scale municipal commerce platform promoting local businesses across Aragón. Developed cross-platform features for Android and iOS using Xamarin Forms.',
+            description: 'Contributed as a Senior Mobile Engineer to Volveremos si tu vuelves, a large-scale municipal commerce platform promoting local businesses across Aragón. Developed cross-platform features for Android and iOS using Xamarin Forms.',
             metrics: [
                 '100K+ Android Downloads',
                 'Cross-Platform Android & iOS Development',
@@ -234,9 +236,9 @@ const projects = [
         },
         modal: {
             icon: <Building2 size={22} />,
-            title: 'Volveremos Aragón',
+            title: 'Volveremos si tu vuelves',
             subtitle: 'Senior Mobile Engineer · Xamarin Forms',
-            hook: 'Worked as a Senior Mobile Engineer on Volveremos Aragón, a cross-platform commerce incentive platform used across multiple municipalities in Aragón to promote local business activity.',
+            hook: 'Worked as a Senior Mobile Engineer on Volveremos si tu vuelves, a cross-platform commerce incentive platform used across multiple municipalities in Aragón to promote local business activity.',
             context: [
                 'Municipal commerce platform initially launched by Zaragoza City Council and later expanded across Aragón.',
                 'Cross-platform mobile application available on both Android and iOS.',
@@ -263,9 +265,10 @@ const projects = [
                 { label: 'REST APIs', category: 'Integration' },
                 { label: 'Public Sector', category: 'Domain' },
             ],
-            year: '2020',
+            year: '2020 - 2021',
             links: [
-                { url: 'https://play.google.com/store/apps/details?id=es.zaragoza.volveremos', label: 'Play Store' }
+                { url: 'https://play.google.com/store/apps/details?id=es.zaragoza.volveremos', label: 'Customer App' },
+                { url: 'https://play.google.com/store/apps/details?id=es.zaragoza.comerciosvolveremos', label: 'Merchant App' }
             ],
         }
     },
@@ -307,8 +310,10 @@ const projects = [
                 { label: 'Bug Fixing', category: 'Engineering' },
                 { label: 'Performance Optimization', category: 'Engineering' },
             ],
-            year: '2022',
-            links: [],
+            year: '2019',
+            links: [
+                { url: 'https://www.android.com/intl/en_ie/auto/compatibility/vehicles/', label: 'Android Auto Compatibility' }
+            ],
         }
     },
 ];
