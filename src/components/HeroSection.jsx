@@ -240,7 +240,7 @@ const styles = {
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
         gap: '24px',
-        marginTop: '64px',
+        marginTop: '32px',
     },
     statCard: {
         display: 'flex',
