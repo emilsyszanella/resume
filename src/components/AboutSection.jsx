@@ -85,6 +85,8 @@ const AboutSection = () => {
                             src="./profile.jpeg"
                             alt="Emilsys Zanella — Tech Lead & Android Engineer"
                             style={styles.photo}
+                            loading="lazy"
+                            decoding="async"
                         />
                         {/* Decorative ring */}
                         <div style={styles.photoRing} />
