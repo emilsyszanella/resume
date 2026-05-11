@@ -1,4 +1,4 @@
-# Emilsys Zanella — Portfolio 2025
+# Emilsys Zanella — Portfolio 2026
 
 **Tech Lead & Senior Android Engineer** | Spain · EU Passport · Open to Global Remote
 
