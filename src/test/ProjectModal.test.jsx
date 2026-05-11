@@ -106,19 +106,35 @@ describe('ProjectModal', () => {
         expect(screen.getByText('DevOps')).toBeInTheDocument();
     });
 
-    it('does not render external link button when link is null', () => {
-        render(<ProjectModal isOpen={true} onClose={onClose} data={mockData} />);
-        expect(screen.queryByRole('link', { name: /View Project/ })).not.toBeInTheDocument();
+    it('does not render external links when links array is empty', () => {
+        const dataWithNoLinks = { ...mockData, links: [] };
+        render(<ProjectModal isOpen={true} onClose={onClose} data={dataWithNoLinks} />);
+        expect(screen.queryByRole('link')).not.toBeInTheDocument();
     });
 
-    it('renders external link button when link is provided', () => {
-        const dataWithLink = { ...mockData, link: 'https://play.google.com', linkLabel: 'View on Play Store' };
-        render(<ProjectModal isOpen={true} onClose={onClose} data={dataWithLink} />);
-        const link = screen.getByRole('link', { name: /View on Play Store/ });
-        expect(link).toBeInTheDocument();
-        expect(link).toHaveAttribute('href', 'https://play.google.com');
-        expect(link).toHaveAttribute('target', '_blank');
-        expect(link).toHaveAttribute('rel', 'noopener noreferrer');
+    it('renders multiple external links when provided', () => {
+        const dataWithLinks = {
+            ...mockData,
+            links: [
+                { url: 'https://play.google.com', label: 'Play Store' },
+                { url: 'https://apps.apple.com', label: 'App Store' }
+            ]
+        };
+        render(<ProjectModal isOpen={true} onClose={onClose} data={dataWithLinks} />);
+        
+        const playStoreLink = screen.getByRole('link', { name: /View project on Play Store/ });
+        expect(playStoreLink).toBeInTheDocument();
+        expect(playStoreLink).toHaveAttribute('href', 'https://play.google.com');
+
+        const appStoreLink = screen.getByRole('link', { name: /View project on App Store/ });
+        expect(appStoreLink).toBeInTheDocument();
+        expect(appStoreLink).toHaveAttribute('href', 'https://apps.apple.com');
+    });
+
+    it('renders the year badge when provided', () => {
+        const dataWithYear = { ...mockData, year: '2023' };
+        render(<ProjectModal isOpen={true} onClose={onClose} data={dataWithYear} />);
+        expect(screen.getByText('2023')).toBeInTheDocument();
     });
 
     // ── Accessibility ──────────────────────────────────────────────────────────

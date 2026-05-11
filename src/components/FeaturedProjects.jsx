@@ -55,8 +55,11 @@ const projects = [
                 { label: 'CI/CD', category: 'DevOps' },
                 { label: 'Tech Mentorship', category: 'Leadership' },
             ],
-            link: null,
-            linkLabel: 'View on Play Store',
+            year: '2023 - Present',
+            links: [
+                { url: 'https://play.google.com/store/apps/details?id=com.carrefour.espana', label: 'Play Store' },
+                { url: 'https://apps.apple.com/es/app/carrefour-espa%C3%B1a/id585238053', label: 'App Store' }
+            ],
         }
     },
     {
@@ -104,8 +107,10 @@ const projects = [
                 { label: 'CI/CD', category: 'DevOps' },
                 { label: 'Tech Leadership', category: 'Leadership' },
             ],
-            link: null,
-            linkLabel: 'View on Play Store',
+            year: '2019 - 2022',
+            links: [
+                { url: 'https://play.google.com/store/apps/details?id=com.inditex.zara', label: 'Play Store' }
+            ],
         }
     },
     {
@@ -155,7 +160,8 @@ const projects = [
                 { label: 'Device Policy Manager', category: 'System' },
                 { label: 'Game Engine Design', category: 'Feature' },
             ],
-            link: null,
+            year: '2021',
+            links: [],
         }
     },
     {
@@ -199,7 +205,8 @@ const projects = [
                 { label: 'ISO 26262 Awareness', category: 'Standards' },
                 { label: 'Safety-Critical', category: 'Standards' },
             ],
-            link: null,
+            year: '2022',
+            links: [],
         }
     },
     {
@@ -243,7 +250,10 @@ const projects = [
                 { label: 'Real-time Sync', category: 'Architecture' },
                 { label: 'Background Services', category: 'System' },
             ],
-            link: null,
+            year: '2021',
+            links: [
+                { url: 'https://example.com/janis.apk', label: 'Download APK' }
+            ],
         }
     },
     {
@@ -287,7 +297,8 @@ const projects = [
                 { label: 'Offline Caching', category: 'Architecture' },
                 { label: 'Civic Tech', category: 'Domain' },
             ],
-            link: null,
+            year: '2014',
+            links: [],
         }
     },
 ];

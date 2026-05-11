@@ -94,7 +94,10 @@ const ProjectModal = ({ isOpen, onClose, data }) => {
                                 {data.icon}
                             </div>
                             <div>
-                                <h2 id="modal-title" style={modalStyles.title}>{data.title}</h2>
+                                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                                    <h2 id="modal-title" style={modalStyles.title}>{data.title}</h2>
+                                    {data.year && <span style={modalStyles.yearBadge}>{data.year}</span>}
+                                </div>
                                 {data.subtitle && (
                                     <p style={modalStyles.subtitle}>{data.subtitle}</p>
                                 )}
@@ -198,16 +201,22 @@ const ProjectModal = ({ isOpen, onClose, data }) => {
                                 </section>
                             )}
 
-                            {/* External Link */}
-                            {data.link && (
-                                <a
-                                    href={data.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={modalStyles.linkBtn}
-                                >
-                                    {data.linkLabel || 'View Project'} <ArrowUpRight size={16} aria-hidden="true" />
-                                </a>
+                            {/* External Links */}
+                            {data.links && data.links.length > 0 && (
+                                <div style={modalStyles.linksContainer}>
+                                    {data.links.map((link, index) => (
+                                        <a
+                                            key={index}
+                                            href={link.url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            style={modalStyles.linkBtn}
+                                            aria-label={`View project on ${link.label}`}
+                                        >
+                                            {link.label} <ArrowUpRight size={16} aria-hidden="true" />
+                                        </a>
+                                    ))}
+                                </div>
                             )}
                         </div>
                     </motion.div>
@@ -446,6 +455,21 @@ const modalStyles = {
         fontWeight: '600',
         alignSelf: 'flex-start',
         transition: 'opacity 0.2s',
+    },
+    linksContainer: {
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '12px',
+        marginTop: '8px',
+    },
+    yearBadge: {
+        fontSize: '14px',
+        fontWeight: '600',
+        color: 'var(--text-tertiary)',
+        background: 'var(--bg-secondary)',
+        padding: '2px 8px',
+        borderRadius: '6px',
+        border: '1px solid var(--border-subtle)',
     },
 };
 
