@@ -17,8 +17,10 @@ const Navbar = () => {
         const sections = document.querySelectorAll('section');
         const observerOptions = {
             root: null,
-            rootMargin: '0px',
-            threshold: 0.4 // Trigger when 40% visible
+            // Creates a "detection band" in the upper third of the screen
+            // so it detects sections even if they are taller than the viewport (e.g., mobile)
+            rootMargin: '-20% 0px -60% 0px',
+            threshold: 0
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -37,12 +39,36 @@ const Navbar = () => {
         };
     }, []);
 
+    // Mobile Menu Body Scroll Lock & Escape Key
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+            const handleKeyDown = (e) => {
+                if (e.key === 'Escape') setIsMobileMenuOpen(false);
+            };
+            document.addEventListener('keydown', handleKeyDown);
+            return () => {
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', handleKeyDown);
+            };
+        } else {
+            document.body.style.overflow = '';
+        }
+        return () => { document.body.style.overflow = ''; };
+    }, [isMobileMenuOpen]);
+
     const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
     const getLinkStyle = (sectionId) => ({
         ...styles.link,
         color: activeSection === sectionId ? 'var(--text-primary)' : 'var(--text-secondary)',
         fontWeight: activeSection === sectionId ? '600' : '500',
+    });
+
+    const getMobileLinkStyle = (sectionId) => ({
+        color: activeSection === sectionId ? 'var(--accent-color)' : 'var(--text-primary)',
+        fontWeight: activeSection === sectionId ? '700' : '600',
+        transition: 'color 0.2s',
     });
 
     return (
@@ -53,8 +79,8 @@ const Navbar = () => {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                 style={{
                     ...styles.nav,
-                    background: isScrolled ? 'rgba(0, 0, 0, 0.8)' : 'transparent',
-                    borderBottom: isScrolled ? '1px solid rgba(255, 255, 255, 0.05)' : 'none',
+                    background: isScrolled ? 'var(--bg-primary)' : 'transparent',
+                    borderBottom: isScrolled ? '1px solid var(--border-subtle)' : 'none',
                     backdropFilter: isScrolled ? 'blur(20px)' : 'none',
                 }}
             >
@@ -64,17 +90,29 @@ const Navbar = () => {
                     {/* Desktop Links */}
                     <ul style={styles.desktopLinks} className="desktop-only">
                         <li>
-                            <a href="#about" style={getLinkStyle('about')}>About</a>
+                            <a href="#about" style={getLinkStyle('about')} aria-current={activeSection === 'about' ? 'page' : undefined}>About</a>
                         </li>
                         <li>
-                            <a href="#projects" style={getLinkStyle('projects')}>Work</a>
+                            <a href="#philosophy" style={getLinkStyle('philosophy')} aria-current={activeSection === 'philosophy' ? 'page' : undefined}>Expertise</a>
+                        </li>
+                        <li>
+                            <a href="#projects" style={getLinkStyle('projects')} aria-current={activeSection === 'projects' ? 'page' : undefined}>Work</a>
+                        </li>
+                        <li>
+                            <a href="#testimonials" style={getLinkStyle('testimonials')} aria-current={activeSection === 'testimonials' ? 'page' : undefined}>Testimonials</a>
+                        </li>
+                        <li>
+                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" style={{ ...styles.cta, background: 'transparent', border: '1px solid var(--border-focus)' }}>
+                                Resume
+                            </a>
                         </li>
                         <li>
                             <a
                                 href="#contact"
+                                aria-current={activeSection === 'contact' ? 'page' : undefined}
                                 style={{
                                     ...styles.cta,
-                                    background: activeSection === 'contact' ? 'var(--text-primary)' : 'rgba(255, 255, 255, 0.1)',
+                                    background: activeSection === 'contact' ? 'var(--text-primary)' : 'var(--card-bg-subtle)',
                                     color: activeSection === 'contact' ? 'var(--bg-primary)' : 'var(--text-primary)'
                                 }}
                             >
@@ -84,8 +122,14 @@ const Navbar = () => {
                     </ul>
 
                     {/* Mobile Menu Button */}
-                    <button style={styles.mobileToggle} onClick={toggleMenu} className="mobile-only">
-                        {isMobileMenuOpen ? <X size={24} color="#fff" /> : <Menu size={24} color="#fff" />}
+                    <button 
+                        style={styles.mobileToggle} 
+                        onClick={toggleMenu} 
+                        className="mobile-only"
+                        aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={isMobileMenuOpen}
+                    >
+                        {isMobileMenuOpen ? <X size={24} color="var(--text-primary)" /> : <Menu size={24} color="var(--text-primary)" />}
                     </button>
                 </div>
             </motion.nav>
@@ -103,13 +147,22 @@ const Navbar = () => {
                     >
                         <ul style={styles.mobileLinks}>
                             <li>
-                                <a href="#about" onClick={toggleMenu} style={getLinkStyle('about')}>About</a>
+                                <a href="#about" onClick={toggleMenu} style={getMobileLinkStyle('about')} aria-current={activeSection === 'about' ? 'page' : undefined}>About</a>
                             </li>
                             <li>
-                                <a href="#projects" onClick={toggleMenu} style={getLinkStyle('projects')}>Work</a>
+                                <a href="#philosophy" onClick={toggleMenu} style={getMobileLinkStyle('philosophy')} aria-current={activeSection === 'philosophy' ? 'page' : undefined}>Expertise</a>
                             </li>
                             <li>
-                                <a href="#contact" onClick={toggleMenu} style={{ color: activeSection === 'contact' ? 'var(--accent-color)' : 'var(--text-primary)' }}>Contact</a>
+                                <a href="#projects" onClick={toggleMenu} style={getMobileLinkStyle('projects')} aria-current={activeSection === 'projects' ? 'page' : undefined}>Work</a>
+                            </li>
+                            <li>
+                                <a href="#testimonials" onClick={toggleMenu} style={getMobileLinkStyle('testimonials')} aria-current={activeSection === 'testimonials' ? 'page' : undefined}>Testimonials</a>
+                            </li>
+                            <li>
+                                <a href="#contact" onClick={toggleMenu} style={getMobileLinkStyle('contact')} aria-current={activeSection === 'contact' ? 'page' : undefined}>Contact</a>
+                            </li>
+                            <li>
+                                <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" onClick={toggleMenu} style={{ color: 'var(--text-secondary)' }}>Resume PDF</a>
                             </li>
                         </ul>
                     </motion.div>
@@ -165,7 +218,7 @@ const styles = {
     },
     cta: {
         color: 'var(--text-primary)',
-        background: 'rgba(255, 255, 255, 0.1)',
+        background: 'var(--card-bg-subtle)',
         padding: '8px 16px',
         borderRadius: '20px',
         transition: 'background 0.2s',
@@ -180,7 +233,7 @@ const styles = {
         top: '80px', // Below nav
         left: 0,
         right: 0,
-        background: 'rgba(18, 18, 18, 0.95)',
+        background: 'var(--bg-primary)',
         backdropFilter: 'blur(20px)',
         padding: '32px',
         borderBottom: '1px solid var(--border-subtle)',

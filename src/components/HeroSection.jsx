@@ -1,6 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Smartphone } from 'lucide-react';
+import { ChevronRight, Award, Users, TrendingUp } from 'lucide-react';
+
+const stats = [
+    { icon: <Award size={26} color="var(--accent-color)" />, value: '11+', label: 'Years Engineering' },
+    { icon: <Users size={26} color="var(--accent-color)" />, value: '+12.6M', label: 'Users Impacted' },
+    { icon: <TrendingUp size={26} color="var(--accent-color)" />, value: 'Acquired', label: 'Health-tech App Exit' },
+];
 
 const HeroSection = () => {
     return (
@@ -60,7 +66,8 @@ const HeroSection = () => {
                     transition={{ duration: 0.8, delay: 0.4 }}
                 >
                     <p style={styles.description}>
-                        I don't just build apps; I define the standard. From high-scale systems at <strong>Inditex (ZARA)</strong> to award-winning native solutions. Bridging the gap between creative vision and rock-solid engineering.
+                        Building the mobile systems that scale to millions —
+                        and leading the engineers who build them.
                     </p>
                 </motion.div>
 
@@ -79,36 +86,72 @@ const HeroSection = () => {
                         View Selected Work <ChevronRight size={20} />
                     </motion.a>
                     <motion.a
-                        href="#contact"
+                        href="#about"
                         style={styles.secondaryButton}
                         whileHover={{ scale: 1.05, background: 'rgba(255,255,255,0.1)' }}
                         whileTap={{ scale: 0.95 }}
                     >
-                        Contact Me
+                        About Me
                     </motion.a>
                 </motion.div>
 
+
                 <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.8 }}
-                    style={styles.statsRow}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 0.6 }}
+                    style={styles.statsContainer}
+                    className="stats-container"
                 >
-                    <div style={styles.statItem}>
-                        <span style={styles.statValue}>11+</span>
-                        <span style={styles.statLabel}>Years Exp.</span>
-                    </div>
-                    <div style={styles.separator}></div>
-                    <div style={styles.statItem}>
-                        <span style={styles.statValue}>+12.6M</span>
-                        <span style={styles.statLabel}>Users Impacted</span>
-                    </div>
-                    <div style={styles.separator}></div>
-                    <div style={styles.statItem}>
-                        <span style={styles.statValue}>Top 1%</span>
-                        <span style={styles.statLabel}>Talent</span>
-                    </div>
+                    {stats.map((stat, i) => (
+                        <motion.div
+                            key={i}
+                            style={styles.statCard}
+                            className="stat-card"
+                            whileHover={{ y: -5, background: 'var(--bg-secondary)' }}
+                            aria-label={`${stat.value} ${stat.label}`}
+                        >
+                            <div style={styles.iconContainer} className="stat-icon" aria-hidden="true">
+                                {stat.icon}
+                            </div>
+                            <div style={styles.statContent} className="stat-content" aria-hidden="true">
+                                <span className="text-gradient stat-value" style={styles.statValue}>{stat.value}</span>
+                                <span style={styles.statLabel} className="stat-label">{stat.label}</span>
+                            </div>
+                        </motion.div>
+                    ))}
                 </motion.div>
+
+                {/* Local styles for single-line mobile responsiveness */}
+                <style>{`
+                    @media (max-width: 768px) {
+                        .stats-container {
+                            gap: 12px !important;
+                        }
+                        .stat-card {
+                            flex-direction: column !important;
+                            align-items: center !important;
+                            text-align: center !important;
+                            gap: 8px !important;
+                            padding: 8px !important;
+                        }
+                        .stat-icon {
+                            width: 40px !important;
+                            height: 40px !important;
+                        }
+                        .stat-icon svg {
+                            width: 20px !important;
+                            height: 20px !important;
+                        }
+                        .stat-value {
+                            font-size: 22px !important;
+                        }
+                        .stat-label {
+                            font-size: 10px !important;
+                            letter-spacing: 0px !important;
+                        }
+                    }
+                `}</style>
             </div>
         </section>
     );
@@ -119,7 +162,8 @@ const styles = {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        paddingTop: '60px',
+        paddingTop: '100px',
+        paddingBottom: '60px',
         position: 'relative',
         overflow: 'hidden',
     },
@@ -132,8 +176,8 @@ const styles = {
         display: 'inline-flex',
         alignItems: 'center',
         gap: '8px',
-        background: 'rgba(255, 255, 255, 0.1)',
-        border: '1px solid rgba(255, 255, 255, 0.1)',
+        background: 'var(--card-bg-subtle)',
+        border: '1px solid var(--border-subtle)',
         padding: '8px 16px',
         borderRadius: '30px',
         fontSize: '14px',
@@ -145,8 +189,8 @@ const styles = {
         width: '8px',
         height: '8px',
         borderRadius: '50%',
-        background: '#30D158', // Success Green
-        boxShadow: '0 0 8px #30D158',
+        background: 'var(--success-color)', // Success Green
+        boxShadow: '0 0 8px var(--success-color)',
         animation: 'pulse 2s infinite',
     },
     headline: {
@@ -155,9 +199,7 @@ const styles = {
         fontWeight: '800',
         marginBottom: '32px',
         letterSpacing: '-2px',
-        background: 'linear-gradient(to bottom, #fff, #ccc)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
+        color: 'var(--text-primary)',
     },
     description: {
         fontSize: 'clamp(18px, 2vw, 22px)',
@@ -173,8 +215,8 @@ const styles = {
         flexWrap: 'wrap',
     },
     primaryButton: {
-        background: 'var(--text-primary)',
-        color: 'var(--bg-primary)',
+        background: 'var(--accent-color)',
+        color: '#FFFFFF',
         padding: '16px 32px',
         borderRadius: '30px',
         fontSize: '16px',
@@ -191,38 +233,55 @@ const styles = {
         borderRadius: '30px',
         fontSize: '16px',
         fontWeight: '600',
-        background: 'rgba(255,255,255,0.02)',
+        background: 'var(--card-bg-subtle)',
         backdropFilter: 'blur(10px)',
     },
-    statsRow: {
-        display: 'flex',
-        gap: '32px',
-        alignItems: 'center',
-        borderTop: '1px solid var(--border-subtle)',
-        paddingTop: '32px',
+    statsContainer: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '24px',
+        marginTop: '32px',
     },
-    statItem: {
+    statCard: {
+        display: 'flex',
+        alignItems: 'center',
+        gap: '20px',
+        padding: '16px',
+        borderRadius: '16px',
+        transition: 'background 0.3s, transform 0.3s',
+        cursor: 'default',
+    },
+    iconContainer: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '56px',
+        height: '56px',
+        borderRadius: '16px',
+        background: 'var(--bg-primary)',
+        border: '1px solid var(--border-subtle)',
+        boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+        flexShrink: 0,
+    },
+    statContent: {
         display: 'flex',
         flexDirection: 'column',
-        gap: '4px',
+        gap: '2px',
     },
     statValue: {
-        fontSize: '24px',
-        fontWeight: '700',
-        color: 'var(--text-primary)',
+        fontSize: '32px',
+        fontWeight: '800',
+        letterSpacing: '-1px',
+        display: 'inline-block', // Crucial for text-gradient
     },
     statLabel: {
         fontSize: '13px',
-        color: 'var(--text-secondary)',
+        color: 'var(--text-tertiary)',
+        lineHeight: '1.4',
+        fontWeight: '600',
         textTransform: 'uppercase',
-        letterSpacing: '1px',
-        fontWeight: '500',
+        letterSpacing: '0.5px',
     },
-    separator: {
-        width: '1px',
-        height: '40px',
-        background: 'var(--border-subtle)',
-    }
 };
 
 export default HeroSection;
