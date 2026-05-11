@@ -29,8 +29,15 @@ const ProjectCard = ({
     className = '',
 }) => {
     const handleReadMore = (e) => {
-        e.stopPropagation();
+        if (e && e.stopPropagation) e.stopPropagation();
         if (onReadMore) onReadMore();
+    };
+
+    const handleKeyDown = (e) => {
+        if (clickable && (e.key === 'Enter' || e.key === ' ')) {
+            e.preventDefault();
+            handleReadMore(e);
+        }
     };
 
     return (
@@ -40,6 +47,11 @@ const ProjectCard = ({
                 ...cardStyles.card,
                 cursor: clickable ? 'pointer' : 'default',
             }}
+            onClick={clickable ? handleReadMore : undefined}
+            onKeyDown={clickable ? handleKeyDown : undefined}
+            role={clickable ? 'button' : undefined}
+            tabIndex={clickable ? 0 : undefined}
+            aria-label={clickable ? `View details for ${title}` : undefined}
         >
             {/* Header: title + subtitle LEFT, icon RIGHT */}
             <div style={cardStyles.header}>
@@ -84,9 +96,9 @@ const ProjectCard = ({
             {/* Read More — only if clickable */}
             {clickable && (
                 <div style={cardStyles.readMoreRow}>
-                    <button onClick={handleReadMore} style={cardStyles.readMoreBtn}>
+                    <span style={cardStyles.readMoreBtn} aria-hidden="true">
                         Read More <ArrowRight size={14} />
-                    </button>
+                    </span>
                 </div>
             )}
         </div>

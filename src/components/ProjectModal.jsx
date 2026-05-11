@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowUpRight } from 'lucide-react';
 
@@ -20,15 +20,34 @@ import { X, ArrowUpRight } from 'lucide-react';
  * }
  */
 const ProjectModal = ({ isOpen, onClose, data }) => {
-    // Lock body scroll while modal is open
+    const closeBtnRef = useRef(null);
+
+    // Lock body scroll and handle keyboard events while modal is open
     useEffect(() => {
         if (isOpen) {
             document.body.style.overflow = 'hidden';
+            
+            // Focus the close button when opened
+            setTimeout(() => {
+                closeBtnRef.current?.focus();
+            }, 100);
+
+            const handleKeyDown = (e) => {
+                if (e.key === 'Escape') {
+                    onClose();
+                }
+            };
+            document.addEventListener('keydown', handleKeyDown);
+
+            return () => {
+                document.body.style.overflow = '';
+                document.removeEventListener('keydown', handleKeyDown);
+            };
         } else {
             document.body.style.overflow = '';
         }
         return () => { document.body.style.overflow = ''; };
-    }, [isOpen]);
+    }, [isOpen, onClose]);
 
     if (!data) return null;
 
@@ -57,9 +76,15 @@ const ProjectModal = ({ isOpen, onClose, data }) => {
                         style={modalStyles.panel}
                         role="dialog"
                         aria-modal="true"
+                        aria-label={data.title}
                     >
                         {/* Close button */}
-                        <button onClick={onClose} style={modalStyles.closeBtn} aria-label="Close">
+                        <button 
+                            ref={closeBtnRef} 
+                            onClick={onClose} 
+                            style={modalStyles.closeBtn} 
+                            aria-label="Close modal"
+                        >
                             <X size={20} />
                         </button>
 

@@ -50,7 +50,7 @@ const Testimonials = () => {
                 </motion.div>
 
                 <div style={styles.carouselContainer}>
-                    <button onClick={handlePrev} style={styles.navButton}>
+                    <button onClick={handlePrev} style={styles.navButton} aria-label="Previous testimonial">
                         <ChevronLeft size={24} color="var(--text-primary)" />
                     </button>
 
@@ -81,18 +81,22 @@ const Testimonials = () => {
                         </AnimatePresence>
                     </div>
 
-                    <button onClick={handleNext} style={styles.navButton}>
+                    <button onClick={handleNext} style={styles.navButton} aria-label="Next testimonial">
                         <ChevronRight size={24} color="var(--text-primary)" />
                     </button>
                 </div>
 
                 <div style={styles.dotsContainer}>
                     {testimonials.map((_, idx) => (
-                        <div 
+                        <button 
                             key={idx} 
+                            aria-label={`Go to testimonial ${idx + 1}`}
+                            aria-current={idx === currentIndex ? 'true' : 'false'}
                             style={{
                                 ...styles.dot, 
-                                background: idx === currentIndex ? 'var(--accent-color)' : 'var(--border-subtle)'
+                                background: idx === currentIndex ? 'var(--accent-color)' : 'var(--border-subtle)',
+                                border: 'none',
+                                padding: 0
                             }}
                             onClick={() => setCurrentIndex(idx)}
                         />

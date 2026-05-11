@@ -89,7 +89,13 @@ const Navbar = () => {
                     </ul>
 
                     {/* Mobile Menu Button */}
-                    <button style={styles.mobileToggle} onClick={toggleMenu} className="mobile-only">
+                    <button 
+                        style={styles.mobileToggle} 
+                        onClick={toggleMenu} 
+                        className="mobile-only"
+                        aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                        aria-expanded={isMobileMenuOpen}
+                    >
                         {isMobileMenuOpen ? <X size={24} color="var(--text-primary)" /> : <Menu size={24} color="var(--text-primary)" />}
                     </button>
                 </div>
