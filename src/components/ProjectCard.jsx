@@ -41,7 +41,7 @@ const ProjectCard = ({
     };
 
     return (
-        <div
+        <motion.div
             className={`project-card-unified ${className}`}
             style={{
                 ...cardStyles.card,
@@ -52,6 +52,14 @@ const ProjectCard = ({
             role={clickable ? 'button' : undefined}
             tabIndex={clickable ? 0 : undefined}
             aria-label={clickable ? `View details for ${title}` : undefined}
+            whileHover={clickable ? {
+                y: -6,
+                scale: 1.015,
+                boxShadow: '0 16px 40px rgba(37, 99, 235, 0.12), 0 4px 12px rgba(37, 99, 235, 0.08)',
+                borderColor: 'var(--border-focus)',
+                transition: { duration: 0.25, ease: [0.16, 1, 0.3, 1] }
+            } : {}}
+            whileTap={clickable ? { scale: 0.985 } : {}}
         >
             {/* Header: title + subtitle LEFT, icon RIGHT */}
             <div style={cardStyles.header}>
@@ -101,7 +109,7 @@ const ProjectCard = ({
                     </span>
                 </div>
             )}
-        </div>
+        </motion.div>
     );
 };
 
