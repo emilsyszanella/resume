@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Flexible base path for any repo name
+  base: '/resume/', // Base path for GitHub Pages
   test: {
     environment: 'jsdom',
     globals: true,
