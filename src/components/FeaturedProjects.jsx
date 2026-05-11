@@ -267,7 +267,7 @@ const projects = [
             ],
             year: '2021',
             links: [
-                { url: 'https://memoria-s8k0.andro.io/', label: 'Super Memoria' },
+                { url: 'https://play.google.com/store/apps/details?id=com.Keycore.memoria&hl=en&gl=us', label: 'Super Memoria' },
                 { url: 'https://play.google.com/store/apps/details?id=com.Keycore.supercientifico&hl=es', label: 'Super Científico' }
             ],
         }
