@@ -161,6 +161,7 @@ const FeaturedProjects = () => {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
+                    transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                     style={styles.header}
                 >
                     <span style={styles.badge}>Selected Work</span>
@@ -175,7 +176,7 @@ const FeaturedProjects = () => {
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true, margin: '-100px' }}
-                            transition={{ delay: index * 0.08, duration: 0.5 }}
+                            transition={{ delay: index * 0.08, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                             className={`project-card span-${project.colSpan || 1}`}
                             style={{ height: '100%' }}
                         >
