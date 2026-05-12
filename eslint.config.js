@@ -23,7 +23,15 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': [
+        'error',
+        {
+          // Allow PascalCase vars (React components) AND 'motion' / 'AnimatePresence' (framer-motion JSX namespace)
+          varsIgnorePattern: '^([A-Z_]|motion|AnimatePresence)',
+          // Ignore unused destructured vars when there is a rest sibling (e.g. prop-stripping in tests)
+          ignoreRestSiblings: true,
+        },
+      ],
     },
   },
 ])
