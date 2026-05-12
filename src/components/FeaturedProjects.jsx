@@ -126,7 +126,7 @@ const projects = [
             icon: <Building2 size={22} />,
             title: 'Volveremos si tu vuelves',
             subtitle: 'Senior Mobile Engineer · Cross-Platform',
-            description: 'Contributed as a Senior Mobile Engineer to Volveremos si tu vuelves, a large-scale municipal commerce platform promoting local businesses across Aragón. Developed cross-platform features for Android and iOS using Xamarin Forms.',
+            description: 'Contributed as a Senior Mobile Engineer to Volveremos si tu vuelves, a large-scale municipal commerce platform promoting local businesses across Aragon. Developed cross-platform features for Android and iOS using Xamarin Forms.',
             metrics: [
                 '100K+ Android Downloads',
                 'Cross-Platform Android & iOS Development',
@@ -137,9 +137,9 @@ const projects = [
             icon: <Building2 size={22} />,
             title: 'Volveremos si tu vuelves',
             subtitle: 'Senior Mobile Engineer · Xamarin Forms',
-            hook: 'Worked as a Senior Mobile Engineer on Volveremos si tu vuelves, a cross-platform commerce incentive platform used across multiple municipalities in Aragón to promote local business activity.',
+            hook: 'Worked as a Senior Mobile Engineer on Volveremos si tu vuelves, a cross-platform commerce incentive platform used across multiple municipalities in Aragon to promote local business activity.',
             context: [
-                'Municipal commerce platform initially launched by Zaragoza City Council and later expanded across Aragón.',
+                'Municipal commerce platform initially launched by Zaragoza City Council and later expanded across Aragon.',
                 'Cross-platform mobile application available on both Android and iOS.',
                 'Focused on supporting local commerce campaigns through cashback and incentive systems.',
             ],
@@ -153,7 +153,7 @@ const projects = [
             metrics: [
                 '100K+ Android downloads publicly available on Google Play.',
                 'Cross-platform deployment across Android and iOS ecosystems.',
-                'Used across multiple municipalities in Aragón as part of local commerce initiatives.',
+                'Used across multiple municipalities in Aragon as part of local commerce initiatives.',
             ],
             tags: [
                 { label: 'C#', category: 'Language' },
@@ -268,7 +268,7 @@ const projects = [
             year: '2021',
             links: [
                 { url: 'https://play.google.com/store/apps/details?id=com.Keycore.memoria&hl=en&gl=us', label: 'Super Memoria' },
-                { url: 'https://play.google.com/store/apps/details?id=com.Keycore.supercientifico&hl=es', label: 'Super Científico' }
+                { url: 'https://play.google.com/store/apps/details?id=com.Keycore.supercientifico&hl=en', label: 'Super Scientist' }
             ],
         }
     },
